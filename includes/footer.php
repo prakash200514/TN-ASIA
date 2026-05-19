@@ -1,0 +1,8 @@
+<?php // includes/footer.php ?>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- TNSTC Main JS -->
+  <script src="<?= APP_URL ?>/assets/js/main.js"></script>
+  <?php if (!empty($extraScripts)) echo $extraScripts; ?>
+</body>
+</html>
