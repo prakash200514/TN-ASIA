@@ -243,34 +243,34 @@ CREATE TABLE IF NOT EXISTS `notifications` (
 
 -- Admin user (password: Admin@123)
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('System Admin','admin@tnstc.tn.gov.in','9999900000','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','admin','active');
+('System Admin','admin@tnstc.tn.gov.in','9999900000','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','admin','active');
 
 -- Minister user (password: Minister@123)
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('District Minister','minister@tnstc.tn.gov.in','9999900001','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','minister','active');
+('District Minister','minister@tnstc.tn.gov.in','9999900001','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','minister','active');
 
 -- Depot Managers (password: Manager@123)
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('Thamirabarani Manager','manager1@tnstc.tn.gov.in','9444100001','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('Bye-Pass Manager','manager2@tnstc.tn.gov.in','9444100002','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('KTC Nagar Manager','manager3@tnstc.tn.gov.in','9444100003','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('Cheranmahadevi Manager','manager4@tnstc.tn.gov.in','9444100004','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('Valliyoor Manager','manager5@tnstc.tn.gov.in','9444100005','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('Thisayanvilai Manager','manager6@tnstc.tn.gov.in','9444100006','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active'),
-('Papanasam Manager','manager7@tnstc.tn.gov.in','9444100007','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','depot_manager','active');
+('Thamirabarani Manager','manager1@tnstc.tn.gov.in','9444100001','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('Bye-Pass Manager','manager2@tnstc.tn.gov.in','9444100002','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('KTC Nagar Manager','manager3@tnstc.tn.gov.in','9444100003','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('Cheranmahadevi Manager','manager4@tnstc.tn.gov.in','9444100004','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('Valliyoor Manager','manager5@tnstc.tn.gov.in','9444100005','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('Thisayanvilai Manager','manager6@tnstc.tn.gov.in','9444100006','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active'),
+('Papanasam Manager','manager7@tnstc.tn.gov.in','9444100007','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','depot_manager','active');
 
 -- Sample Passenger (password: Pass@123)
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('Arun Kumar','arun@gmail.com','9876543210','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','passenger','active');
+('Arun Kumar','arun@gmail.com','9876543210','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','passenger','active');
 
 -- Sample Driver user (password: Driver@123)
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('Rajan Kumar','driver1@tnstc.tn.gov.in','9876100001','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','driver','active'),
-('Selvam P','driver2@tnstc.tn.gov.in','9876100002','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','driver','active');
+('Rajan Kumar','driver1@tnstc.tn.gov.in','9876100001','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','driver','active'),
+('Selvam P','driver2@tnstc.tn.gov.in','9876100002','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','driver','active');
 
 -- Sample Conductor user
 INSERT INTO `users` (`name`,`email`,`phone`,`password`,`role`,`status`) VALUES
-('Murugan S','conductor1@tnstc.tn.gov.in','9876200001','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','conductor','active');
+('Murugan S','conductor1@tnstc.tn.gov.in','9876200001','$2y$10$hVCClR4irKRkKJ6QXQOEuewxYqy7lS7empimaazEcNhSin8ttC8KS','conductor','active');
 
 -- 7 Depots (manager_id set after user creation)
 INSERT INTO `depots` (`depot_name`,`location`,`district`,`manager_id`,`latitude`,`longitude`) VALUES
