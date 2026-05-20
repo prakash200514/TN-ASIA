@@ -103,3 +103,15 @@ Google Maps API: Enter your Maps API Key for tracking and live mapping widgets.
 
 Verify Folders
 Ensure that the target directory has write permissions for ticket generation and pass document uploads (e.g. proof documents storage directories).
+
+🔑 Default Credentials (for testing)
+All default test accounts have preset passwords. Use them to access their respective panels:
+
+Role	Email	Password
+System Admin	admin@tnstc.tn.gov.in	Admin@123
+District Minister	minister@tnstc.tn.gov.in	Minister@123
+Depot Manager	manager1@tnstc.tn.gov.in (Thamirabarani Depot)	Manager@123
+Driver / Conductor	driver1@tnstc.tn.gov.in	Driver@123
+Conductor	conductor1@tnstc.tn.gov.in	Driver@123
+Passenger	arun@gmail.com	Pass@123
+Developed for the Department of Transport, Government of Tamil Nadu.s
