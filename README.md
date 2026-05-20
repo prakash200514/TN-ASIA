@@ -68,3 +68,10 @@ tickets: Paid tickets storing bookings, passenger details, seat numbers, fare, a
 bus_pass: Applications and active bus passes with validity range and document paths.
 complaints & lost_found: Grievance records and items ledger.
 live_tracking & emergency_alerts: Live coordinates of running buses and SOS distress signals.
+
+⚙️ Installation & Setup
+Requirements
+Server Environment: Apache (XAMPP / WAMP / MAMP or standalone PHP/Apache setup)
+PHP Version: 8.0 or higher
+Database: MySQL 5.7+ or MariaDB 10.4+
+SMTP Credentials: Required for mail notifications and OTP verification.
