@@ -56,6 +56,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Scroll Reveal System ── */
+  const revealElements = document.querySelectorAll('.animate-fade-up, .animate-fade-left, .animate-fade-right, .animate-scale-in, .animate-fade-in');
+  
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('reveal'));
+  }
+
+  /* ── Ripple Click Effect ── */
+  document.querySelectorAll('.btn-primary-custom, .btn-accent-custom, .btn-warning, .btn-primary').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const ripple = document.createElement('span');
+      ripple.className = 'btn-ripple-span';
+      ripple.style.position = 'absolute';
+      ripple.style.width = '60px';
+      ripple.style.height = '60px';
+      ripple.style.background = 'rgba(255, 255, 255, 0.35)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+      ripple.style.pointerEvents = 'none';
+      ripple.style.transition = 'transform 0.4s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.4s ease';
+      
+      const origPosition = window.getComputedStyle(this).position;
+      if (origPosition === 'static') {
+        this.style.position = 'relative';
+      }
+      this.style.overflow = 'hidden';
+      
+      this.appendChild(ripple);
+      
+      requestAnimationFrame(() => {
+        ripple.style.transform = 'translate(-50%, -50%) scale(3.5)';
+        ripple.style.opacity = '0';
+      });
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 450);
+    });
+  });
+
 });
 
 // ============================================================
