@@ -43,3 +43,10 @@ Bus Pass Verification: Review submitted student/monthly documents and approve/re
 Staff Control: Track leave and status for drivers and conductors (depot_manager/staff.php).
 Grievance Redressal: Read complaints and submit official resolution replies (depot_manager/complaints.php).
 Analytics & Reports: Visual charts depicting passenger volume, revenue, and delays (depot_manager/reports.php).
+
+4. 🏛️ TNSTC Minister Panel
+Executive Analytics: Global dashboard summarizing district-wide operations (minister/dashboard.php).
+Depot Performance: Comparative analysis of efficiency, bookings, and revenue metrics (minister/depot_performance.php).
+Emergency Reports: Review active and resolved safety alerts (minister/emergency_report.php).
+Delay Reports: Track overall punctuality rates and depot delay factors (minister/delay_report.php).
+Complaint Analytics: Track categories of grievances to identify areas for systemic improvement (minister/complaint_analytics.php).
