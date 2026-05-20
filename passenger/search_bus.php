@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../config/db.php';
 requireLogin('passenger');
+$db = getDB();
+$stops = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name ASC')->fetchAll(PDO::FETCH_COLUMN);
+
 $src  = sanitize($_GET['src']  ?? '');
 $dst  = sanitize($_GET['dst']  ?? '');
 $date = $_GET['date'] ?? date('Y-m-d');
@@ -19,11 +22,11 @@ include __DIR__ . '/../includes/header.php';
       <form id="searchForm" class="row g-3 align-items-end">
         <div class="col-sm-4">
           <label class="form-label">From</label>
-          <input type="text" name="src" id="srcInput" class="form-control-custom" placeholder="Tirunelveli" value="<?= htmlspecialchars($src) ?>" required>
+          <input type="text" name="src" id="srcInput" list="bus-stops" class="form-control-custom" placeholder="Tirunelveli" value="<?= htmlspecialchars($src) ?>" required autocomplete="off">
         </div>
         <div class="col-sm-4">
           <label class="form-label">To</label>
-          <input type="text" name="dst" id="dstInput" class="form-control-custom" placeholder="Valliyoor" value="<?= htmlspecialchars($dst) ?>" required>
+          <input type="text" name="dst" id="dstInput" list="bus-stops" class="form-control-custom" placeholder="Valliyoor" value="<?= htmlspecialchars($dst) ?>" required autocomplete="off">
         </div>
         <div class="col-sm-2">
           <label class="form-label">Date</label>
@@ -34,6 +37,12 @@ include __DIR__ . '/../includes/header.php';
             <i class="fa fa-search"></i> Search
           </button>
         </div>
+        
+        <datalist id="bus-stops">
+          <?php foreach ($stops as $stop): ?>
+            <option value="<?= htmlspecialchars($stop) ?>"></option>
+          <?php endforeach; ?>
+        </datalist>
       </form>
     </div>
   </div>

@@ -15,6 +15,7 @@ $totalBuses  = $db->query('SELECT COUNT(*) FROM buses WHERE status="active"')->f
 $totalRoutes = $db->query('SELECT COUNT(*) FROM routes')->fetchColumn();
 $totalUsers  = $db->query('SELECT COUNT(*) FROM users WHERE role="passenger"')->fetchColumn();
 $totalDepots = 7;
+$stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name ASC')->fetchAll(PDO::FETCH_COLUMN);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -146,14 +147,14 @@ $totalDepots = 7;
                 <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">From</label>
                 <div style="position:relative">
                   <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
-                  <input type="text" name="src" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Tirunelveli" required>
+                  <input type="text" name="src" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Tirunelveli" required>
                 </div>
               </div>
               <div class="col-6">
                 <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">To</label>
                 <div style="position:relative">
                   <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
-                  <input type="text" name="dst" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Valliyoor" required>
+                  <input type="text" name="dst" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Valliyoor" required>
                 </div>
               </div>
               <div class="col-6">
@@ -169,6 +170,12 @@ $totalDepots = 7;
                 </button>
               </div>
             </div>
+            
+            <datalist id="bus-stops">
+              <?php foreach ($stops as $stop): ?>
+                <option value="<?= htmlspecialchars($stop) ?>"></option>
+              <?php endforeach; ?>
+            </datalist>
           </form>
         </div>
       </div>

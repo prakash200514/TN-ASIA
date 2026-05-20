@@ -73,6 +73,14 @@ CREATE TABLE IF NOT EXISTS `route_stops` (
 ) ENGINE=InnoDB;
 
 -- ============================================================
+-- TABLE: bus_stops
+-- ============================================================
+CREATE TABLE IF NOT EXISTS `bus_stops` (
+  `stop_id`   INT AUTO_INCREMENT PRIMARY KEY,
+  `stop_name` VARCHAR(150) NOT NULL UNIQUE
+) ENGINE=InnoDB;
+
+-- ============================================================
 -- TABLE: drivers
 -- ============================================================
 CREATE TABLE IF NOT EXISTS `drivers` (
@@ -347,3 +355,49 @@ INSERT INTO `live_tracking` (`bus_id`,`latitude`,`longitude`) VALUES
 -- Sample complaint (passenger_id 10 = Arun Kumar)
 INSERT INTO `complaints` (`passenger_id`,`depot_id`,`category`,`description`,`status`) VALUES
 (10,1,'delay','Bus TN72 A 0001 was 30 minutes late on 18-May-2026 morning.','open');
+
+-- Bus Stops Seed Data
+INSERT INTO `bus_stops` (`stop_name`) VALUES
+('Ariyakulam'),
+('Balabagya Nagar North'),
+('Burkitmanagaram'),
+('C N Village'),
+('Chellathai Nagar'),
+('Chidambaram Nagar, Keelanatham'),
+('Gomathy Nagar, Balabagya Nagar North'),
+('Gomathy Nagar, Manimoorthispuram'),
+('K.t.c Nagar'),
+('Karaieruppu'),
+('Kayalpattinam, Thirunagar, Tirunelveli Town'),
+('Lalugapuram'),
+('Manappadaividu, Thoothukudi'),
+('Manimoorthispuram'),
+('Mehalingapuram, Selva Vignesh Nagar'),
+('Melakarai New Colony'),
+('Melakulam'),
+('Melapalayam'),
+('Naranammalpuram, Thoothukudi'),
+('Palayamkottai'),
+('Palayanchettikulam'),
+('Palayapettai'),
+('Poyalan Nagar'),
+('Ramnagar, Thattarmadam'),
+('Santhi Nagar'),
+('Selva Vignesh Nagar'),
+('Senthimangalam'),
+('Sharon Nagar'),
+('Sripuram, Thirunagar, Tirunelveli Town'),
+('Sugar Mill Colony, Sugar Mill Colony, Balabagya Nagar South, Tirunelveli Town'),
+('Thachanallur'),
+('Thalavaaipuram'),
+('Thattarmadam, Thachanallur'),
+('Thimmarajapuram'),
+('Thirunagar, Tirunelveli Town'),
+('Thiyagarajanagar'),
+('Tirunelveli'),
+('Tirunelveli Junction'),
+('Tirunelveli Town'),
+('Tvs Nagar'),
+('Udaya Nagar'),
+('V.m.chatram'),
+('Vanarapettai');

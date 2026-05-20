@@ -14,6 +14,7 @@ if ($role === 'admin') {
     ['icon'=>'fa-building',     'label'=>'Depots',           'href'=>"$base/manage_depots.php"],
     ['icon'=>'fa-bus',          'label'=>'Buses',            'href'=>"$base/manage_buses.php"],
     ['icon'=>'fa-route',        'label'=>'Routes',           'href'=>"$base/manage_routes.php"],
+    ['icon'=>'fa-location-dot', 'label'=>'Bus Stops',        'href'=>"$base/manage_stops.php"],
     ['icon'=>'fa-calendar-days','label'=>'Schedules',        'href'=>"$base/manage_schedules.php"],
     ['icon'=>'fa-users',        'label'=>'Users',            'href'=>"$base/manage_users.php"],
     'sep2' => 'Operations',
