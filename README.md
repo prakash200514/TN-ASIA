@@ -55,3 +55,16 @@ Complaint Analytics: Track categories of grievances to identify areas for system
 User Control: Complete access control over user permissions, role elevation, and activation status (admin/manage_users.php).
 Depot & Route Registries: Manage primary depot coordinates, routes, and individual route stops (admin/manage_depots.php, admin/manage_routes.php).
 Audit Logs & Master Management: Manage master copies of tickets, schedules, passes, complaints, and recovered items system-wide.
+
+🗄️ Database Schema Outline
+The application runs on tnstc_tirunelveli database schema. Key tables include:
+
+users: Stores passenger, driver, conductor, manager, minister, and admin credentials.
+depots: Office names, locations, manager foreign keys, and map coordinates.
+buses: Registered vehicles, categories (Ordinary, Express, AC, etc.), seat capacity, and status.
+routes & route_stops: Defines routes, intermediate stops, distance, and sequence.
+schedules: Operational runs mapped to a bus, route, driver, conductor, time, date, and delay offsets.
+tickets: Paid tickets storing bookings, passenger details, seat numbers, fare, and verification QR links.
+bus_pass: Applications and active bus passes with validity range and document paths.
+complaints & lost_found: Grievance records and items ledger.
+live_tracking & emergency_alerts: Live coordinates of running buses and SOS distress signals.
