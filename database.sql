@@ -321,14 +321,14 @@ INSERT INTO `route_stops` (`route_id`,`stop_name`,`stop_order`,`arrival_time`) V
 (3,'Ambasamudram',3,'07:45:00'),
 (3,'Papanasam',4,'08:40:00');
 
--- Drivers
+-- Drivers (user_id 11 = Rajan Kumar, 12 = Selvam P)
 INSERT INTO `drivers` (`user_id`,`license_number`,`depot_id`,`status`) VALUES
-(12,'TN72-DL-001234',1,'active'),
-(13,'TN72-DL-005678',2,'active');
+(11,'TN72-DL-001234',1,'active'),
+(12,'TN72-DL-005678',2,'active');
 
--- Conductors
+-- Conductors (user_id 13 = Murugan S)
 INSERT INTO `conductors` (`user_id`,`depot_id`,`status`) VALUES
-(14,1,'active');
+(13,1,'active');
 
 -- Schedules
 INSERT INTO `schedules` (`bus_id`,`route_id`,`driver_id`,`conductor_id`,`departure_time`,`arrival_time`,`travel_date`,`status`) VALUES
@@ -344,6 +344,6 @@ INSERT INTO `live_tracking` (`bus_id`,`latitude`,`longitude`) VALUES
 (2,8.7139,77.7567),
 (3,8.7200,77.7480);
 
--- Sample complaint
+-- Sample complaint (passenger_id 10 = Arun Kumar)
 INSERT INTO `complaints` (`passenger_id`,`depot_id`,`category`,`description`,`status`) VALUES
-(11,1,'delay','Bus TN72 A 0001 was 30 minutes late on 18-May-2026 morning.','open');
+(10,1,'delay','Bus TN72 A 0001 was 30 minutes late on 18-May-2026 morning.','open');
