@@ -50,3 +50,8 @@ Depot Performance: Comparative analysis of efficiency, bookings, and revenue met
 Emergency Reports: Review active and resolved safety alerts (minister/emergency_report.php).
 Delay Reports: Track overall punctuality rates and depot delay factors (minister/delay_report.php).
 Complaint Analytics: Track categories of grievances to identify areas for systemic improvement (minister/complaint_analytics.php).
+
+5. ⚙️ System Administrator Dashboard
+User Control: Complete access control over user permissions, role elevation, and activation status (admin/manage_users.php).
+Depot & Route Registries: Manage primary depot coordinates, routes, and individual route stops (admin/manage_depots.php, admin/manage_routes.php).
+Audit Logs & Master Management: Manage master copies of tickets, schedules, passes, complaints, and recovered items system-wide.
