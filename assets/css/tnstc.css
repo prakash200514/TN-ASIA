@@ -105,21 +105,23 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
+  font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif;
+  font-size: 14.5px;
   color: var(--gray-800);
-  background: var(--gray-100);
-  line-height: 1.6;
+  background: var(--gray-50);
+  line-height: 1.65;
+  letter-spacing: -0.015em;
 }
 
-a { text-decoration: none; color: inherit; }
+a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
 
 img { max-width: 100%; }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--gray-100); }
-::-webkit-scrollbar-thumb { background: var(--gray-400); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 99px; border: 2px solid var(--gray-100); }
+::-webkit-scrollbar-thumb:hover { background: var(--gray-400); }
 
 /* ============================================================
    LAYOUT – Sidebar + Main
