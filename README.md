@@ -11,3 +11,9 @@ Cheranmahadevi Depot (Cheranmahadevi)
 Valliyoor Depot (Valliyoor)
 Thisayanvilai Depot (Thisayanvilai)
 Papanasam Depot (Papanasam)
+
+🛠️ Technology Stack
+Backend: Native PHP 8.x (using PDO for secure, prepared SQL statements)
+Frontend: HTML5, CSS3 (Custom tnstc.css Design System), JavaScript (ES6+), Bootstrap 5, Font Awesome 6
+Database: MySQL (InnoDB engine with strict foreign key constraints)
+Integrations: Google Maps API (Live Tracking), Google Charts / Charts.js (Analytics), QR Code API (Ticket & Pass validation)
