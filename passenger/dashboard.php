@@ -20,33 +20,33 @@ include __DIR__ . '/../includes/header.php';
 
 <div style="max-width:1100px;margin:0 auto;padding:24px 16px">
   <!-- Welcome Banner -->
-  <div class="mb-4 p-4 rounded-3" style="background:linear-gradient(135deg,#1a6b3c,#0d4a28);color:#fff">
-    <h1 style="font-size:22px;font-weight:700">Welcome back, <?= htmlspecialchars($user['name']) ?>! 👋</h1>
-    <p style="opacity:.8;margin:4px 0 0;font-size:14px">Tirunelveli District TNSTC – Passenger Dashboard</p>
+  <div class="mb-4 p-4 rounded-3 animate-fade-right" style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent-dark) 100%);color:#fff;box-shadow:0 10px 30px rgba(20,83,45,0.15)">
+    <h1 style="font-size:24px;font-weight:800;letter-spacing:-0.02em">Welcome back, <?= htmlspecialchars($user['name']) ?>! 👋</h1>
+    <p style="opacity:.85;margin:6px 0 0;font-size:14.5px;font-weight:500">Tirunelveli District TNSTC – Passenger Dashboard</p>
   </div>
 
   <!-- Quick Actions -->
   <div class="row g-3 mb-4">
     <?php
     $actions = [
-      ['🔍','Search Bus','Find and book a bus','search_bus.php','#1a6b3c'],
-      ['🎫','My Tickets','View all your tickets','my_tickets.php','#1d4ed8'],
+      ['🔍','Search Bus','Find and book a bus','search_bus.php','var(--primary)'],
+      ['🎫','My Tickets','View all your tickets','my_tickets.php','var(--accent)'],
       ['🪪','Bus Pass','Apply or view pass status','bus_pass.php','#7c3aed'],
-      ['📍','Track Bus','Live bus location map','live_tracking.php','#c2410c'],
+      ['📍','Track Bus','Live bus location map','live_tracking.php','#d97706'],
       ['💬','Complaints','Submit or track complaints','complaints.php','#854d0e'],
-      ['📦','Lost & Found','Report or claim items','lost_found.php','#0f766e'],
-      ['🤖','AI Chatbot','Ask route questions','chatbot.php','#075985'],
+      ['📦','Lost & Found','Report or claim items','lost_found.php','#0d9488'],
+      ['🤖','AI Chatbot','Ask route questions','chatbot.php','#0284c7'],
     ];
+    $aidx = 0;
     foreach ($actions as [$icon,$label,$desc,$href,$color]):
+      $delayClass = 'delay-' . (($aidx % 4) + 1);
+      $aidx++;
     ?>
-    <div class="col-6 col-sm-4 col-md-3">
-      <a href="<?= $href ?>" class="d-block text-center p-3 rounded-3 text-decoration-none animate-fade"
-         style="background:#fff;border:1px solid #e9ecef;transition:all .2s"
-         onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 20px rgba(0,0,0,.1)'"
-         onmouseout="this.style.transform='';this.style.boxShadow=''">
-        <div style="font-size:28px;margin-bottom:8px"><?= $icon ?></div>
-        <div style="font-weight:700;font-size:13px;color:<?= $color ?>"><?= $label ?></div>
-        <div style="font-size:11px;color:#6c757d;margin-top:2px"><?= $desc ?></div>
+    <div class="col-6 col-sm-4 col-md-3 animate-scale-in <?= $delayClass ?>">
+      <a href="<?= $href ?>" class="role-card d-block text-center p-3 text-decoration-none" style="border-radius:16px;border:1px solid var(--gray-200)">
+        <div style="font-size:32px;margin-bottom:8px"><?= $icon ?></div>
+        <div style="font-weight:800;font-size:14px;color:<?= $color ?>;letter-spacing:-0.01em"><?= $label ?></div>
+        <div style="font-size:11.5px;color:#71717a;margin-top:4px;line-height:1.4"><?= $desc ?></div>
       </a>
     </div>
     <?php endforeach; ?>
@@ -54,19 +54,19 @@ include __DIR__ . '/../includes/header.php';
 
   <!-- KPI Cards -->
   <div class="row g-3 mb-4">
-    <div class="col-sm-4">
+    <div class="col-sm-4 animate-fade-up delay-1">
       <div class="stat-card">
         <div class="stat-icon blue"><i class="fa fa-ticket"></i></div>
         <div><div class="stat-label">Active Tickets</div><div class="stat-value"><?= $myTickets ?></div></div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 animate-fade-up delay-2">
       <div class="stat-card">
         <div class="stat-icon purple"><i class="fa fa-id-card"></i></div>
         <div><div class="stat-label">Valid Pass</div><div class="stat-value"><?= $myPass ?></div></div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4 animate-fade-up delay-3">
       <div class="stat-card">
         <div class="stat-icon orange"><i class="fa fa-comments"></i></div>
         <div><div class="stat-label">Open Complaints</div><div class="stat-value"><?= $myComplaints ?></div></div>
@@ -75,13 +75,13 @@ include __DIR__ . '/../includes/header.php';
   </div>
 
   <!-- Recent Tickets -->
-  <div class="table-card mb-4">
-    <div class="table-header">
-      <h5><i class="fa fa-clock me-2 text-success"></i>Recent Tickets</h5>
-      <a href="my_tickets.php" style="font-size:13px;color:#1a6b3c">View All →</a>
+  <div class="table-card mb-4 animate-fade-up delay-4">
+    <div class="table-header" style="padding:18px 24px">
+      <h5 style="font-weight:800;letter-spacing:-0.02em;margin:0"><i class="fa fa-clock me-2 text-success"></i>Recent Tickets</h5>
+      <a href="my_tickets.php" style="font-size:13.5px;color:var(--primary);font-weight:600">View All →</a>
     </div>
     <?php if (empty($recent)): ?>
-      <div class="empty-state"><i class="fa fa-ticket"></i>No tickets booked yet.<br><a href="search_bus.php" style="color:#1a6b3c">Search & book a bus</a></div>
+      <div class="empty-state"><i class="fa fa-ticket"></i>No tickets booked yet.<br><a href="search_bus.php" style="color:var(--primary)">Search & book a bus</a></div>
     <?php else: ?>
     <div class="table-responsive">
       <table class="data-table">
