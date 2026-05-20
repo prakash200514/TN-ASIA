@@ -15,7 +15,7 @@ $links = [
 ];
 ?>
 <!-- Top Navbar (mobile-friendly passenger nav) -->
-<nav class="navbar navbar-expand-lg" style="background:#1a6b3c;padding:0 20px;height:56px;position:sticky;top:0;z-index:900">
+<nav class="navbar navbar-expand-lg" style="background:var(--primary);padding:0 20px;height:56px;position:sticky;top:0;z-index:900">
   <a class="navbar-brand text-white fw-bold d-flex align-items-center gap-2" href="<?= APP_URL ?>">
     <span style="font-size:22px">🚌</span> TNSTC
   </a>

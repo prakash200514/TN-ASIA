@@ -37,14 +37,37 @@ $totalDepots = 7;
 <body style="background:#f8f9fa">
 
 <!-- Navbar -->
-<nav class="navbar navbar-landing navbar-expand-lg px-4 py-2">
-  <a class="navbar-brand text-white fw-bold d-flex align-items-center gap-2" href="<?= APP_URL ?>">
-    <span style="font-size:26px">🚌</span>
-    <div><div style="font-size:15px;line-height:1">TNSTC</div><div style="font-size:10px;opacity:.7;letter-spacing:1px">TIRUNELVELI DISTRICT</div></div>
-  </a>
-  <div class="ms-auto d-flex gap-2">
-    <a href="<?= APP_URL ?>/auth/register.php" class="btn btn-sm btn-outline-light fw-600">Register</a>
-    <a href="<?= APP_URL ?>/auth/login.php" class="btn btn-sm btn-warning text-dark fw-bold">Login</a>
+<nav class="navbar navbar-expand-lg bg-white px-4 py-3" style="box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid var(--gray-200);">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
+    <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="<?= APP_URL ?>" style="color: var(--primary)">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary" style="color: var(--primary)">
+        <rect x="4" y="4" width="16" height="16" rx="2" />
+        <path d="M4 9h16" />
+        <path d="M4 14h16" />
+        <path d="M8 18H8.01" />
+        <path d="M16 18H16.01" />
+      </svg>
+      <div>
+        <div style="font-size:16px;line-height:1;font-weight:800;letter-spacing:-0.02em">TNSTC</div>
+        <div style="font-size:9px;color:var(--gray-600);letter-spacing:1px;font-weight:600">TIRUNELVELI DISTRICT</div>
+      </div>
+    </a>
+    
+    <div class="collapse navbar-collapse justify-content-center" id="navbarLandingContent">
+      <ul class="navbar-nav gap-4">
+        <li class="nav-item"><a class="nav-link active fw-bold" style="font-size:14.5px; border-bottom: 2px solid var(--primary); padding-bottom: 4px; color: var(--primary) !important" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#routes">Routes</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#depots">Depots</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    
+    <div class="d-flex gap-2">
+      <a href="<?= APP_URL ?>/auth/register.php" class="btn btn-outline-primary px-3 fw-bold btn-sm" style="border-radius:8px; border-color:var(--primary); color:var(--primary)">Register</a>
+      <a href="<?= APP_URL ?>/auth/login.php" class="btn btn-primary px-3 fw-bold btn-sm" style="border-radius:8px; background:var(--primary); border:none">Login</a>
+    </div>
   </div>
 </nav>
 
@@ -53,46 +76,95 @@ $totalDepots = 7;
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6 animate-fade-right">
-        <div class="mb-2" style="display:inline-block;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:20px;font-size:12px;color:rgba(255,255,255,.85);letter-spacing:1.5px;font-weight:600">
+        <div class="mb-2" style="display:inline-block;background:rgba(37,99,235,0.08);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--primary);letter-spacing:1px;font-weight:700">
           🏛️ GOVERNMENT OF TAMIL NADU
         </div>
-        <h1 style="font-size:clamp(28px,4.5vw,48px);font-weight:800;line-height:1.2;color:#fff;margin-top:12px;letter-spacing:-0.03em">
+        <h1 style="font-size:clamp(32px,4.5vw,48px);font-weight:800;line-height:1.2;color:var(--gray-800);margin-top:12px;letter-spacing:-0.03em">
           TNSTC Smart Bus<br>Management System
         </h1>
-        <p style="color:rgba(255,255,255,.8);font-size:16px;margin:20px 0 32px;line-height:1.6">
+        <p style="color:var(--gray-600);font-size:16px;margin:20px 0 32px;line-height:1.6">
           Tirunelveli District — 7 Depots · Book tickets, track buses live, apply passes, and more — all in one platform.
         </p>
         <div class="d-flex gap-3 flex-wrap">
-          <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:#ffc107;color:#1a1d23;font-weight:700">
+          <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
             <i class="fa fa-user-plus"></i> Get Started
           </a>
-          <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.1)">
+          <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
             <i class="fa fa-right-to-bracket"></i> Login
           </a>
+        </div>
+        
+        <!-- Vector Bus & City Illustration -->
+        <div class="hero-illustration d-none d-lg-block mt-5" style="position:relative; height: 130px; opacity: 0.9">
+          <svg viewBox="0 0 400 120" style="position:absolute; bottom:0; left:0; width:100%; height:auto">
+            <!-- City skyline -->
+            <path d="M 0 120 L 0 80 L 15 80 L 15 90 L 30 90 L 30 70 L 45 70 L 45 100 L 60 100 L 60 60 L 80 60 L 80 95 L 95 95 L 95 50 L 115 50 L 115 85 L 130 85 L 130 75 L 145 75 L 145 120 Z" fill="#e2e8f0" opacity="0.5" />
+            <path d="M 120 120 L 120 70 L 140 70 L 140 85 L 160 85 L 160 65 L 180 65 L 180 95 L 195 95 L 195 40 L 225 40 L 225 80 L 245 80 L 245 70 L 270 70 L 270 120 Z" fill="#cbd5e1" opacity="0.6" />
+            <path d="M 240 120 L 240 80 L 255 80 L 255 90 L 270 90 L 270 60 L 290 60 L 290 95 L 310 95 L 310 55 L 330 55 L 330 85 L 350 85 L 350 75 L 370 75 L 370 120 Z" fill="#cbd5e1" opacity="0.4" />
+            <!-- Trees -->
+            <circle cx="340" cy="100" r="12" fill="#94a3b8" opacity="0.6" />
+            <rect x="338" y="108" width="4" height="12" fill="#64748b" opacity="0.6" />
+            <circle cx="355" cy="105" r="8" fill="#94a3b8" opacity="0.5" />
+            <rect x="353" y="110" width="3" height="10" fill="#64748b" opacity="0.5" />
+          </svg>
+          
+          <svg viewBox="0 0 200 70" width="180" style="position:absolute; bottom:0; left:30px">
+            <rect x="5" y="55" width="170" height="10" rx="3" fill="#cbd5e1" />
+            <rect x="10" y="15" width="160" height="40" rx="8" fill="#2563eb" />
+            <rect x="10" y="32" width="160" height="23" fill="#1d4ed8" />
+            <path d="M 40 15 L 130 15 L 120 10 L 50 10 Z" fill="#1e40af" />
+            <path d="M 10 20 Q 5 20 5 27 L 5 45 L 20 45 L 20 20 Z" fill="#0f172a" />
+            <path d="M 7 23 L 18 23 L 18 42 L 7 42 Z" fill="#60a5fa" opacity="0.8" />
+            <rect x="25" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
+            <rect x="52" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
+            <rect x="79" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
+            <rect x="106" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
+            <rect x="133" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
+            <circle cx="32" cy="27" r="3" fill="#1e40af" opacity="0.6" />
+            <circle cx="64" cy="27" r="3" fill="#1e40af" opacity="0.6" />
+            <circle cx="118" cy="27" r="3" fill="#1e40af" opacity="0.6" />
+            <circle cx="5" cy="48" r="3" fill="#fbbf24" />
+            <polygon points="5,46 -15,40 -15,56" fill="#fef08a" opacity="0.3" />
+            <rect x="168" y="45" width="2" height="6" fill="#ef4444" />
+            <circle cx="45" cy="55" r="11" fill="#1e293b" />
+            <circle cx="45" cy="55" r="5" fill="#94a3b8" />
+            <circle cx="135" cy="55" r="11" fill="#1e293b" />
+            <circle cx="135" cy="55" r="5" fill="#94a3b8" />
+            <rect x="25" y="40" width="130" height="2" fill="#ffffff" opacity="0.7" />
+          </svg>
         </div>
       </div>
       <div class="col-lg-6 mt-4 mt-lg-0 animate-fade-left">
         <!-- Quick Search Widget -->
-        <div class="search-widget">
-          <h5 style="font-size:17px;font-weight:800;margin-bottom:20px;color:#14532d;letter-spacing:-0.02em">
-            <i class="fa fa-magnifying-glass me-2" style="color:var(--primary)"></i>Search Bus
+        <div class="search-widget" style="border: 1px solid var(--gray-200); box-shadow: 0 20px 40px rgba(0,0,0,0.04); border-radius: 16px; padding: 30px;">
+          <h5 style="font-size:17px;font-weight:800;margin-bottom:24px;color:var(--primary);letter-spacing:-0.02em; display:flex; align-items:center; gap:8px">
+            <i class="fa fa-magnifying-glass" style="color:var(--primary)"></i> Search Bus
           </h5>
           <form action="<?= APP_URL ?>/passenger/search_bus.php" method="GET">
             <div class="row g-3">
               <div class="col-6">
-                <label class="form-label" style="font-size:12px;font-weight:700;color:var(--gray-600)">From</label>
-                <input type="text" name="src" class="form-control-custom" placeholder="Tirunelveli" required>
+                <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">From</label>
+                <div style="position:relative">
+                  <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
+                  <input type="text" name="src" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Tirunelveli" required>
+                </div>
               </div>
               <div class="col-6">
-                <label class="form-label" style="font-size:12px;font-weight:700;color:var(--gray-600)">To</label>
-                <input type="text" name="dst" class="form-control-custom" placeholder="Valliyoor" required>
+                <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">To</label>
+                <div style="position:relative">
+                  <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
+                  <input type="text" name="dst" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Valliyoor" required>
+                </div>
               </div>
               <div class="col-6">
-                <label class="form-label" style="font-size:12px;font-weight:700;color:var(--gray-600)">Date</label>
-                <input type="date" name="date" class="form-control-custom" value="<?= date('Y-m-d') ?>" required>
+                <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">Date</label>
+                <div style="position:relative">
+                  <i class="fa fa-calendar-days" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400); pointer-events:none"></i>
+                  <input type="date" name="date" class="form-control-custom" style="padding-left:36px; border-radius:10px;" value="<?= date('Y-m-d') ?>" required>
+                </div>
               </div>
               <div class="col-6 d-flex align-items-end">
-                <button type="submit" class="btn-primary-custom w-100 justify-content-center" style="height:42px">
+                <button type="submit" class="btn-primary-custom w-100 justify-content-center" style="height:44px; border-radius:10px; background:var(--primary); font-weight:700; gap:8px">
                   <i class="fa fa-search"></i> Search
                 </button>
               </div>
@@ -102,12 +174,66 @@ $totalDepots = 7;
       </div>
     </div>
 
-    <!-- Hero Stats -->
-    <div class="row g-4 mt-5">
-      <div class="col-6 col-md-3 animate-fade-up delay-1"><div class="hero-stat"><span class="num"><?= $totalDepots ?></span><span class="lbl">Depots</span></div></div>
-      <div class="col-6 col-md-3 animate-fade-up delay-2"><div class="hero-stat"><span class="num"><?= $totalBuses ?></span><span class="lbl">Active Buses</span></div></div>
-      <div class="col-6 col-md-3 animate-fade-up delay-3"><div class="hero-stat"><span class="num"><?= $totalRoutes ?></span><span class="lbl">Routes</span></div></div>
-      <div class="col-6 col-md-3 animate-fade-up delay-4"><div class="hero-stat"><span class="num"><?= $totalUsers ?>+</span><span class="lbl">Passengers</span></div></div>
+    <!-- Hero Stats Cards -->
+    <div class="row g-3 mt-5">
+      <!-- Depots -->
+      <div class="col-6 col-lg-3 animate-fade-up delay-1">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+          <div style="width:48px;height:48px;background:#eff6ff;color:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+            <i class="fa fa-building"></i>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalDepots ?></div>
+            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Depots</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Active Buses -->
+      <div class="col-6 col-lg-3 animate-fade-up delay-2">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+          <div style="width:48px;height:48px;background:#ecfdf5;color:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+            <i class="fa fa-bus"></i>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalBuses ?></div>
+            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Active Buses</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Routes -->
+      <div class="col-6 col-lg-3 animate-fade-up delay-3">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+          <div style="width:48px;height:48px;background:#faf5ff;color:#8b5cf6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+            <i class="fa fa-route"></i>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalRoutes ?></div>
+            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Routes</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Passengers -->
+      <div class="col-6 col-lg-3 animate-fade-up delay-4">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+          <div style="width:48px;height:48px;background:#fff7ed;color:#f59e0b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+            <i class="fa fa-users"></i>
+          </div>
+          <div>
+            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalUsers ?>+</div>
+            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Passengers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Curved transition wave at the bottom of the hero -->
+    <div style="position: absolute; bottom: 0; left: 0; right: 0; width: 100%; overflow: hidden; line-height: 0; pointer-events: none;">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none" style="width: 100%; height: 20px; display: block;">
+        <path d="M0,30 Q360,60 720,30 T1440,30 L1440,60 L0,60 Z" fill="var(--primary)" opacity="0.95"></path>
+      </svg>
     </div>
   </div>
 </section>

@@ -33,10 +33,10 @@ include __DIR__ . '/../includes/header.php';
   </div>
 
   <?php if (empty($tickets)): ?>
-    <div class="empty-state card"><i class="fa fa-ticket"></i>No tickets booked yet.<br><a href="search_bus.php" style="color:#1a6b3c">Book your first bus →</a></div>
+    <div class="empty-state card"><i class="fa fa-ticket"></i>No tickets booked yet.<br><a href="search_bus.php" style="color:var(--primary)">Book your first bus →</a></div>
   <?php else: ?>
   <div class="row g-3">
-    <?php foreach ($tickets as $t): $color=['active'=>'#1a6b3c','used'=>'#6c757d','cancelled'=>'#dc3545'][$t['ticket_status']]??'#6c757d'; ?>
+    <?php foreach ($tickets as $t): $color=['active'=>'var(--primary)','used'=>'#6c757d','cancelled'=>'#dc3545'][$t['ticket_status']]??'#6c757d'; ?>
     <div class="col-md-6">
       <div class="ticket-card">
         <div class="ticket-header" style="background:linear-gradient(135deg,<?= $color ?>,<?= $color ?>dd)">
@@ -48,7 +48,7 @@ include __DIR__ . '/../includes/header.php';
           <div class="ticket-row"><span class="label">Travel Date</span><span class="value"><?= htmlspecialchars($t['travel_date']) ?></span></div>
           <div class="ticket-row"><span class="label">Departs</span><span class="value"><?= htmlspecialchars(substr($t['departure_time'],0,5)) ?></span></div>
           <div class="ticket-row"><span class="label">Seat</span><span class="value">Seat <?= str_pad($t['seat_number'],2,'0',STR_PAD_LEFT) ?></span></div>
-          <div class="ticket-row"><span class="label">Fare</span><span class="value" style="color:#1a6b3c">₹<?= number_format($t['fare'],2) ?></span></div>
+          <div class="ticket-row"><span class="label">Fare</span><span class="value" style="color:var(--primary)">₹<?= number_format($t['fare'],2) ?></span></div>
         </div>
         <div class="ticket-qr">
           <img src="<?= qrCodeUrl($t['qr_code']) ?>" alt="QR" style="width:120px;height:120px">
@@ -72,7 +72,7 @@ include __DIR__ . '/../includes/header.php';
   <?php if ($pages > 1): ?>
   <nav class="mt-4 d-flex justify-content-center gap-2">
     <?php for ($i=1;$i<=$pages;$i++): ?>
-    <a href="?p=<?= $i ?>" class="btn btn-sm <?= $i==$page?'btn-success':'btn-outline-secondary' ?>"><?= $i ?></a>
+    <a href="?p=<?= $i ?>" class="btn btn-sm <?= $i==$page?'btn-primary':'btn-outline-secondary' ?>"><?= $i ?></a>
     <?php endfor; ?>
   </nav>
   <?php endif; ?>

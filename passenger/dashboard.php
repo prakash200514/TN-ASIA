@@ -20,7 +20,7 @@ include __DIR__ . '/../includes/header.php';
 
 <div style="max-width:1100px;margin:0 auto;padding:24px 16px">
   <!-- Welcome Banner -->
-  <div class="mb-4 p-4 rounded-3 animate-fade-right" style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent-dark) 100%);color:#fff;box-shadow:0 10px 30px rgba(20,83,45,0.15)">
+  <div class="mb-4 p-4 rounded-3 animate-fade-right" style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent-dark) 100%);color:#fff;box-shadow:0 10px 30px rgba(var(--primary-rgb),0.15)">
     <h1 style="font-size:24px;font-weight:800;letter-spacing:-0.02em">Welcome back, <?= htmlspecialchars($user['name']) ?>! 👋</h1>
     <p style="opacity:.85;margin:6px 0 0;font-size:14.5px;font-weight:500">Tirunelveli District TNSTC – Passenger Dashboard</p>
   </div>
