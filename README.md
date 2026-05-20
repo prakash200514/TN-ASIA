@@ -100,3 +100,6 @@ Database connection: DB_HOST, DB_USER, DB_PASS.
 App URL: Set APP_URL to match your local deployment (e.g., http://localhost/TNSTC).
 SMTP Mail Credentials: Enter valid host, username, and password for mail features.
 Google Maps API: Enter your Maps API Key for tracking and live mapping widgets.
+
+Verify Folders
+Ensure that the target directory has write permissions for ticket generation and pass document uploads (e.g. proof documents storage directories).
