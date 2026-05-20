@@ -15,11 +15,21 @@ $recent = $recentTickets->fetchAll();
 $pageTitle = 'Passenger Dashboard';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
+<div class="main-content">
 
-<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
-  <!-- Welcome Banner -->
+  <!-- Topbar -->
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title">👋 Welcome, <?= htmlspecialchars($user['name']) ?></div>
+    <a href="<?= APP_URL ?>/auth/logout.php" class="btn btn-sm btn-outline-secondary ms-auto" style="border-radius:8px;font-size:12px;">
+      <i class="fa fa-right-from-bracket me-1"></i>Logout
+    </a>
+  </div>
+
+  <div class="page-content">
+
   <div class="mb-4 p-4 rounded-3 animate-fade-right" style="background:linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 50%, var(--accent-dark) 100%);color:#fff;box-shadow:0 10px 30px rgba(var(--primary-rgb),0.15)">
     <h1 style="font-size:24px;font-weight:800;letter-spacing:-0.02em">Welcome back, <?= htmlspecialchars($user['name']) ?>! 👋</h1>
     <p style="opacity:.85;margin:6px 0 0;font-size:14.5px;font-weight:500">Tirunelveli District TNSTC – Passenger Dashboard</p>
@@ -102,8 +112,11 @@ include __DIR__ . '/../includes/header.php';
         </tbody>
       </table>
     </div>
+    </div>
     <?php endif; ?>
-  </div>
-</div>
-</div>
+  </div><!-- /.table-card -->
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>
