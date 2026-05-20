@@ -75,3 +75,20 @@ Server Environment: Apache (XAMPP / WAMP / MAMP or standalone PHP/Apache setup)
 PHP Version: 8.0 or higher
 Database: MySQL 5.7+ or MariaDB 10.4+
 SMTP Credentials: Required for mail notifications and OTP verification.
+
+Step-by-Step Installation
+Clone the Repository
+Place the project files into your web root directory (e.g., C:\xampp\htdocs\TNSTC).
+
+Database Setup
+
+Start MySQL on your local server.
+Open phpMyAdmin or your MySQL client.
+Create a database named tnstc_tirunelveli:
+sql
+
+CREATE DATABASE tnstc_tirunelveli CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+Import the database.sql file:
+bash
+
+mysql -u root -p tnstc_tirunelveli < database.sql
