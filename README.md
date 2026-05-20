@@ -35,3 +35,11 @@ QR Ticket Validator: Scan passenger tickets using mobile camera and match via AP
 Real-time Delay Updates: Post immediate delay details and reason codes directly to the passenger app (driver/delay_update.php).
 SOS Emergency System: Trigger critical safety alarms detailing location coordinates to depot control (driver/emergency.php).
 Passenger Manifest: Access the manifest lists of ticket holders for the current run (driver/passenger_list.php).
+
+3. 🏢 Depot Manager Dashboard
+Fleet Management: Audit, register, and update status of depot buses (depot_manager/buses.php).
+Roster & Scheduling: Manage schedule assignments for routes, drivers, and conductors (depot_manager/schedules.php).
+Bus Pass Verification: Review submitted student/monthly documents and approve/reject passes (depot_manager/pass_verification.php).
+Staff Control: Track leave and status for drivers and conductors (depot_manager/staff.php).
+Grievance Redressal: Read complaints and submit official resolution replies (depot_manager/complaints.php).
+Analytics & Reports: Visual charts depicting passenger volume, revenue, and delays (depot_manager/reports.php).
