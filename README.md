@@ -28,3 +28,10 @@ Smart Bus Pass: Apply for Monthly or Student passes with proof document uploads 
 Complaints & Grievances: Lodge complaints (categorized by delay, staff behavior, cleanliness, etc.) and track resolution status (passenger/complaints.php).
 Lost & Found: Report lost belongings or claim items recovered in buses (passenger/lost_found.php).
 AI Chatbot: Intelligent virtual assistant to answer queries on routes, timings, and fares (passenger/chatbot.php).
+
+2. 🚌 Driver & Conductor Panel
+Assigned Trips: View duty rosters and scheduled trips (driver/assigned_trips.php).
+QR Ticket Validator: Scan passenger tickets using mobile camera and match via API (driver/scan_ticket.php).
+Real-time Delay Updates: Post immediate delay details and reason codes directly to the passenger app (driver/delay_update.php).
+SOS Emergency System: Trigger critical safety alarms detailing location coordinates to depot control (driver/emergency.php).
+Passenger Manifest: Access the manifest lists of ticket holders for the current run (driver/passenger_list.php).
