@@ -16,7 +16,6 @@ The **TNSTC Smart Bus System** streamlines transport logistics, passenger ticket
 6. **Thisayanvilai Depot** (Thisayanvilai)
 7. **Papanasam Depot** (Papanasam)
 
----
 
 ## 🛠️ Technology Stack
 
