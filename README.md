@@ -117,7 +117,7 @@ The application runs on `tnstc_tirunelveli` database schema. Key tables include:
 4. **Verify Folders**  
    Ensure that the target directory has write permissions for ticket generation and pass document uploads (e.g. proof documents storage directories).
 
----
+
 
 ## 🔑 Default Credentials (for testing)
 
