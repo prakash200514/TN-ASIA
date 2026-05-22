@@ -105,7 +105,7 @@ The application runs on `tnstc_tirunelveli` database schema. Key tables include:
    - Import the `database.sql` file:
      ```bash
      mysql -u root -p tnstc_tirunelveli < database.sql
-     ```
+     
 
 3. **Application Configuration**  
    Open `config/db.php` and configure:
