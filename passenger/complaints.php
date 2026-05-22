@@ -19,10 +19,16 @@ $depots     = $db->query("SELECT depot_id,depot_name FROM depots ORDER BY depot_
 $pageTitle  = 'Complaints & Feedback';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:1000px;margin:0 auto;padding:24px 16px">
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-comments me-2 text-success"></i>Complaints & Feedback</h1>
+<div class="main-content">
+
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-comments me-2" style="color:var(--primary)"></i>Complaints & Feedback</div>
+  </div>
+
+  <div class="page-content">
   <?php if (!empty($flash['msg'])): ?><div class="flash-banner flash-<?= $flash['type'] ?> mb-3"><?= htmlspecialchars($flash['msg']) ?></div><?php endif; ?>
 
   <ul class="nav nav-tabs mb-4">
@@ -89,8 +95,8 @@ include __DIR__ . '/../includes/header.php';
           </div>
           <p style="margin:10px 0 0;font-size:14px"><?= nl2br(htmlspecialchars($c['description'])) ?></p>
           <?php if ($c['reply']): ?>
-          <div class="mt-3 p-3 rounded" style="background:#e8f5ee;border-left:3px solid #1a6b3c">
-            <strong style="font-size:12px;color:#1a6b3c">Depot Reply:</strong>
+          <div class="mt-3 p-3 rounded" style="background:var(--primary-light);border-left:3px solid var(--primary)">
+            <strong style="font-size:12px;color:var(--primary)">Depot Reply:</strong>
             <p style="margin:4px 0 0;font-size:13px"><?= nl2br(htmlspecialchars($c['reply'])) ?></p>
           </div>
           <?php endif; ?>
@@ -100,6 +106,8 @@ include __DIR__ . '/../includes/header.php';
       <?php endif; ?>
     </div>
   </div>
-</div>
-</div>
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>

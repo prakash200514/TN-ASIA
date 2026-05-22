@@ -24,13 +24,17 @@ $tickets = $stmt->fetchAll();
 $pageTitle = 'My Tickets';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
-  <div class="d-flex align-items-center justify-content-between mb-4">
-    <h1 style="font-size:20px;font-weight:700"><i class="fa fa-ticket me-2 text-success"></i>My Tickets</h1>
-    <a href="search_bus.php" class="btn-primary-custom btn-sm-custom"><i class="fa fa-plus"></i> Book New</a>
+<div class="main-content">
+
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-ticket me-2" style="color:var(--primary)"></i>My Tickets</div>
+    <a href="search_bus.php" class="btn-primary-custom btn-sm-custom ms-auto"><i class="fa fa-plus"></i> Book New</a>
   </div>
+
+  <div class="page-content">
 
   <?php if (empty($tickets)): ?>
     <div class="empty-state card"><i class="fa fa-ticket"></i>No tickets booked yet.<br><a href="search_bus.php" style="color:var(--primary)">Book your first bus →</a></div>
@@ -77,6 +81,8 @@ include __DIR__ . '/../includes/header.php';
   </nav>
   <?php endif; ?>
   <?php endif; ?>
-</div>
-</div>
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>

@@ -28,11 +28,16 @@ $passes = $db->query("SELECT * FROM bus_pass WHERE passenger_id=$uid ORDER BY cr
 $pageTitle = 'Bus Pass';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:900px;margin:0 auto;padding:24px 16px">
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-id-card me-2 text-success"></i>Bus Pass</h1>
+<div class="main-content">
 
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-id-card me-2" style="color:var(--primary)"></i>Bus Pass</div>
+  </div>
+
+  <div class="page-content">
   <?php if (!empty($flash['msg'])): ?>
     <div class="flash-banner flash-<?= $flash['type'] ?> mb-3"><?= htmlspecialchars($flash['msg']) ?></div>
   <?php endif; ?>
@@ -116,6 +121,8 @@ include __DIR__ . '/../includes/header.php';
       <?php endif; ?>
     </div>
   </div>
-</div>
-</div>
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>

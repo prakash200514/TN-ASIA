@@ -6,10 +6,16 @@ $routes = $db->query("SELECT route_number,source,destination,distance,estimated_
 $pageTitle = 'AI Route Assistant';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:800px;margin:0 auto;padding:24px 16px">
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-robot me-2 text-success"></i>AI Route Assistant</h1>
+<div class="main-content">
+
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-robot me-2" style="color:var(--primary)"></i>AI Route Assistant</div>
+  </div>
+
+  <div class="page-content">
 
   <div class="chatbot-wrap">
     <div class="chatbot-header">
@@ -27,9 +33,11 @@ include __DIR__ . '/../includes/header.php';
       <input type="text" id="chatInput" placeholder="Ask me about routes, bus timings, passes…" autocomplete="off">
       <button class="chat-send-btn" id="chatSend"><i class="fa fa-paper-plane"></i></button>
     </div>
-  </div>
-</div>
-</div>
+  </div><!-- /.chatbot-wrap -->
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 
 <script>
 window.TNSTC_ROUTES = <?= json_encode($routes) ?>;

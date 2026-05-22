@@ -10,11 +10,16 @@ $date = $_GET['date'] ?? date('Y-m-d');
 $pageTitle = 'Search Bus';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
+<div class="main-content">
 
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-search me-2 text-success"></i>Search Bus</h1>
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-search me-2" style="color:var(--primary)"></i>Search Bus</div>
+  </div>
+
+  <div class="page-content">
 
   <!-- Search Form -->
   <div class="card mb-4">
@@ -56,8 +61,9 @@ include __DIR__ . '/../includes/header.php';
   <!-- Results -->
   <div id="resultsArea"></div>
 
-</div>
-</div>
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 
 <script>
 const form = document.getElementById('searchForm');

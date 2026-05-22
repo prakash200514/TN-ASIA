@@ -20,11 +20,19 @@ $fare   = round($s['distance'] * 0.60, 2);
 $pageTitle = 'Book Ticket';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:1100px;margin:0 auto;padding:24px 16px">
+<div class="main-content">
 
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-ticket me-2 text-success"></i>Book Ticket</h1>
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-ticket me-2" style="color:var(--primary)"></i>Book Ticket</div>
+    <a href="search_bus.php" class="btn btn-sm btn-outline-secondary ms-auto" style="border-radius:8px;font-size:12px;">
+      <i class="fa fa-arrow-left me-1"></i>Back to Search
+    </a>
+  </div>
+
+  <div class="page-content">
 
   <div class="row g-4">
     <!-- Seat Map -->
@@ -33,9 +41,9 @@ include __DIR__ . '/../includes/header.php';
         <div class="card-header-custom"><i class="fa fa-bus"></i> <?= htmlspecialchars($s['bus_number']) ?> – Seat Selection</div>
         <div class="card-body-custom">
           <div class="d-flex gap-3 mb-3 flex-wrap">
-            <span style="font-size:12px"><span style="display:inline-block;width:16px;height:16px;background:#e8f5ee;border:2px solid #1a6b3c;border-radius:3px;vertical-align:middle"></span> Available</span>
+            <span style="font-size:12px"><span style="display:inline-block;width:16px;height:16px;background:var(--primary-light);border:2px solid var(--primary);border-radius:3px;vertical-align:middle"></span> Available</span>
             <span style="font-size:12px"><span style="display:inline-block;width:16px;height:16px;background:#e9ecef;border:2px solid #ced4da;border-radius:3px;vertical-align:middle"></span> Booked</span>
-            <span style="font-size:12px"><span style="display:inline-block;width:16px;height:16px;background:#1a6b3c;border:2px solid #1a6b3c;border-radius:3px;vertical-align:middle"></span> Selected</span>
+            <span style="font-size:12px"><span style="display:inline-block;width:16px;height:16px;background:var(--primary);border:2px solid var(--primary);border-radius:3px;vertical-align:middle"></span> Selected</span>
           </div>
           <!-- Seat grid -->
           <div class="seat-map" id="seatMap" style="grid-template-columns:repeat(4,1fr);max-width:100%">
@@ -67,7 +75,7 @@ include __DIR__ . '/../includes/header.php';
           <div class="divider-dashed"></div>
           <div class="ticket-row">
             <span class="label" style="font-size:15px;font-weight:700">Total Fare</span>
-            <span class="value" style="font-size:22px;color:#1a6b3c">₹<span id="fareDisplay"><?= number_format($fare,2) ?></span></span>
+            <span class="value" style="font-size:22px;color:var(--primary)">₹<span id="fareDisplay"><?= number_format($fare,2) ?></span></span>
           </div>
           <div class="mt-3">
             <label class="form-label">Board From Stop</label>
@@ -84,9 +92,11 @@ include __DIR__ . '/../includes/header.php';
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
+  </div><!-- /.row -->
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 
 <!-- QR Success Modal -->
 <div class="modal fade" id="qrModal" tabindex="-1">
@@ -140,7 +150,7 @@ async function confirmBooking() {
             <div class="ticket-row"><span class="label">Date</span><span class="value"><?= htmlspecialchars($date) ?></span></div>
             <div class="ticket-row"><span class="label">Departure</span><span class="value"><?= htmlspecialchars(substr($s['departure_time'],0,5)) ?></span></div>
             <div class="ticket-row"><span class="label">Seat</span><span class="value">Seat ${String(selectedSeat).padStart(2,'0')}</span></div>
-            <div class="ticket-row"><span class="label">Fare Paid</span><span class="value" style="color:#1a6b3c;font-size:18px">₹${parseFloat(res.fare).toFixed(2)}</span></div>
+            <div class="ticket-row"><span class="label">Fare Paid</span><span class="value" style="color:var(--primary);font-size:18px">₹${parseFloat(res.fare).toFixed(2)}</span></div>
           </div>
           <div class="ticket-qr">
             <img src="${res.qr_url}" alt="QR Code">

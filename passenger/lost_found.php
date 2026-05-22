@@ -20,10 +20,16 @@ $buses     = $db->query("SELECT bus_id,bus_number FROM buses WHERE status='activ
 $pageTitle = 'Lost & Found';
 include __DIR__ . '/../includes/header.php';
 ?>
-<div style="background:#f8f9fa;min-height:100vh">
+<div class="app-layout">
 <?php include __DIR__ . '/../includes/sidebar_passenger.php'; ?>
-<div style="max-width:1000px;margin:0 auto;padding:24px 16px">
-  <h1 style="font-size:20px;font-weight:700;margin-bottom:20px"><i class="fa fa-box-open me-2 text-success"></i>Lost & Found</h1>
+<div class="main-content">
+
+  <div class="topbar">
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fa fa-bars"></i></button>
+    <div class="topbar-title"><i class="fa fa-box-open me-2" style="color:var(--primary)"></i>Lost & Found</div>
+  </div>
+
+  <div class="page-content">
   <?php if (!empty($flash['msg'])): ?><div class="flash-banner flash-<?= $flash['type'] ?> mb-3"><?= htmlspecialchars($flash['msg']) ?></div><?php endif; ?>
 
   <ul class="nav nav-tabs mb-4">
@@ -70,7 +76,7 @@ include __DIR__ . '/../includes/header.php';
       <div class="row g-3">
         <?php foreach ($foundItems as $fi): ?>
         <div class="col-md-6">
-          <div class="card" style="border-left:4px solid #1a6b3c">
+          <div class="card" style="border-left:4px solid var(--primary)">
             <div class="card-body-custom">
               <strong><?= htmlspecialchars($fi['item_name']) ?></strong>
               <?php if ($fi['bus_number']): ?><span class="badge-custom badge-primary ms-2"><?= htmlspecialchars($fi['bus_number']) ?></span><?php endif; ?>
@@ -106,6 +112,8 @@ include __DIR__ . '/../includes/header.php';
       <?php endif; ?>
     </div>
   </div>
-</div>
-</div>
+
+  </div><!-- /.page-content -->
+</div><!-- /.main-content -->
+</div><!-- /.app-layout -->
 <?php include __DIR__ . '/../includes/footer.php'; ?>
