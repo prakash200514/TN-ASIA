@@ -63,7 +63,7 @@ The **TNSTC Smart Bus System** streamlines transport logistics, passenger ticket
 - **Depot & Route Registries**: Manage primary depot coordinates, routes, and individual route stops (`admin/manage_depots.php`, `admin/manage_routes.php`).
 - **Audit Logs & Master Management**: Manage master copies of tickets, schedules, passes, complaints, and recovered items system-wide.
 
----
+
 
 ## 🗄️ Database Schema Outline
 
