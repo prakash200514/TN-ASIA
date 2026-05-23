@@ -78,8 +78,6 @@ The application runs on `tnstc_tirunelveli` database schema. Key tables include:
 - `complaints` & `lost_found`: Grievance records and items ledger.
 - `live_tracking` & `emergency_alerts`: Live coordinates of running buses and SOS distress signals.
 
----
-
 ## ⚙️ Installation & Setup
 
 ### Requirements
