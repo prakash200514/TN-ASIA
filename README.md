@@ -23,7 +23,6 @@ The **TNSTC Smart Bus System** streamlines transport logistics, passenger ticket
 - **Database**: MySQL (InnoDB engine with strict foreign key constraints)
 - **Integrations**: Google Maps API (Live Tracking), Google Charts / Charts.js (Analytics), QR Code API (Ticket & Pass validation)
 
----
 
 ## 👥 User Roles & Features
 
