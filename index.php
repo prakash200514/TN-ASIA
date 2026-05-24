@@ -1,14 +1,24 @@
 <?php
 require_once __DIR__ . '/config/db.php';
 startAppSession();
+// Redirect staff roles to their dashboards; passengers stay on the homepage
 if (isLoggedIn()) {
     $role = $_SESSION['role'];
-    $map = ['passenger'=>'/passenger/dashboard.php','driver'=>'/driver/dashboard.php',
-            'conductor'=>'/driver/dashboard.php','depot_manager'=>'/depot_manager/dashboard.php',
-            'minister'=>'/minister/dashboard.php','admin'=>'/admin/dashboard.php'];
-    header('Location: '.APP_URL.($map[$role]??'/'));
-    exit;
+    $staffMap = [
+        'driver'        => '/driver/dashboard.php',
+        'conductor'     => '/driver/dashboard.php',
+        'depot_manager' => '/depot_manager/dashboard.php',
+        'minister'      => '/minister/dashboard.php',
+        'admin'         => '/admin/dashboard.php',
+    ];
+    if (isset($staffMap[$role])) {
+        header('Location: ' . APP_URL . $staffMap[$role]);
+        exit;
+    }
+    // Passengers continue to the homepage below
 }
+$loggedUser   = isLoggedIn() ? currentUser() : null;
+$isPassenger  = $loggedUser && $loggedUser['role'] === 'passenger';
 // Quick stats for landing
 $db = getDB();
 $totalBuses  = $db->query('SELECT COUNT(*) FROM buses WHERE status="active"')->fetchColumn();
@@ -65,9 +75,44 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       </ul>
     </div>
     
-    <div class="d-flex gap-2">
-      <a href="<?= APP_URL ?>/auth/register.php" class="btn btn-outline-primary px-3 fw-bold btn-sm" style="border-radius:8px; border-color:var(--primary); color:var(--primary)">Register</a>
-      <a href="<?= APP_URL ?>/auth/login.php" class="btn btn-primary px-3 fw-bold btn-sm" style="border-radius:8px; background:var(--primary); border:none">Login</a>
+    <div class="d-flex gap-2 align-items-center">
+      <?php if ($isPassenger): ?>
+        <!-- Logged-in passenger quick nav -->
+        <a href="<?= APP_URL ?>/passenger/search_bus.php" class="btn btn-sm fw-bold d-none d-md-inline-flex align-items-center gap-1" style="border-radius:8px;border:1px solid var(--gray-200);color:var(--gray-800);font-size:13px">
+          <i class="fa fa-search" style="color:var(--primary)"></i> Search Bus
+        </a>
+        <a href="<?= APP_URL ?>/passenger/my_tickets.php" class="btn btn-sm fw-bold d-none d-md-inline-flex align-items-center gap-1" style="border-radius:8px;border:1px solid var(--gray-200);color:var(--gray-800);font-size:13px">
+          <i class="fa fa-ticket" style="color:#10b981"></i> My Tickets
+        </a>
+        <!-- User avatar dropdown -->
+        <div class="dropdown">
+          <button class="btn btn-sm d-flex align-items-center gap-2 fw-bold" style="border-radius:10px;background:var(--primary-light);color:var(--primary);border:1px solid rgba(37,99,235,.2);font-size:13px" data-bs-toggle="dropdown">
+            <div style="width:28px;height:28px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0">
+              <?= strtoupper(substr($loggedUser['name'], 0, 1)) ?>
+            </div>
+            <span class="d-none d-sm-inline"><?= htmlspecialchars(explode(' ', $loggedUser['name'])[0]) ?></span>
+            <i class="fa fa-chevron-down" style="font-size:10px"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow" style="border-radius:12px;border:1px solid var(--gray-200);min-width:200px;padding:8px">
+            <li>
+              <div class="px-3 py-2 border-bottom mb-1">
+                <div style="font-weight:700;font-size:13.5px;color:var(--gray-800)"><?= htmlspecialchars($loggedUser['name']) ?></div>
+                <div style="font-size:11px;color:var(--gray-600)"><?= htmlspecialchars($loggedUser['email']) ?></div>
+              </div>
+            </li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/passenger/dashboard.php" style="border-radius:8px;font-size:13px;padding:8px 12px"><i class="fa fa-gauge" style="color:var(--primary);width:16px"></i> Dashboard</a></li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/passenger/search_bus.php" style="border-radius:8px;font-size:13px;padding:8px 12px"><i class="fa fa-search" style="color:#10b981;width:16px"></i> Search Bus</a></li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/passenger/my_tickets.php" style="border-radius:8px;font-size:13px;padding:8px 12px"><i class="fa fa-ticket" style="color:#f59e0b;width:16px"></i> My Tickets</a></li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/passenger/bus_pass.php" style="border-radius:8px;font-size:13px;padding:8px 12px"><i class="fa fa-id-card" style="color:#8b5cf6;width:16px"></i> Bus Pass</a></li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/passenger/live_tracking.php" style="border-radius:8px;font-size:13px;padding:8px 12px"><i class="fa fa-location-dot" style="color:#ef4444;width:16px"></i> Live Track</a></li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li><a class="dropdown-item d-flex align-items-center gap-2" href="<?= APP_URL ?>/auth/logout.php" style="border-radius:8px;font-size:13px;padding:8px 12px;color:#ef4444"><i class="fa fa-right-from-bracket" style="width:16px"></i> Logout</a></li>
+          </ul>
+        </div>
+      <?php else: ?>
+        <a href="<?= APP_URL ?>/auth/register.php" class="btn btn-outline-primary px-3 fw-bold btn-sm" style="border-radius:8px; border-color:var(--primary); color:var(--primary)">Register</a>
+        <a href="<?= APP_URL ?>/auth/login.php" class="btn btn-primary px-3 fw-bold btn-sm" style="border-radius:8px; background:var(--primary); border:none">Login</a>
+      <?php endif; ?>
     </div>
   </div>
 </nav>
@@ -87,12 +132,21 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
           Tirunelveli District — 7 Depots · Book tickets, track buses live, apply passes, and more — all in one platform.
         </p>
         <div class="d-flex gap-3 flex-wrap">
-          <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
-            <i class="fa fa-user-plus"></i> Get Started
-          </a>
-          <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
-            <i class="fa fa-right-to-bracket"></i> Login
-          </a>
+          <?php if ($isPassenger): ?>
+            <a href="<?= APP_URL ?>/passenger/search_bus.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
+              <i class="fa fa-search"></i> Search Bus
+            </a>
+            <a href="<?= APP_URL ?>/passenger/dashboard.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
+              <i class="fa fa-gauge"></i> My Dashboard
+            </a>
+          <?php else: ?>
+            <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
+              <i class="fa fa-user-plus"></i> Get Started
+            </a>
+            <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
+              <i class="fa fa-right-to-bracket"></i> Login
+            </a>
+          <?php endif; ?>
         </div>
         
         <!-- Vector Bus & City Illustration -->
@@ -138,30 +192,44 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       <div class="col-lg-6 mt-4 mt-lg-0 animate-fade-left">
         <!-- Quick Search Widget -->
         <div class="search-widget" style="border: 1px solid var(--gray-200); box-shadow: 0 20px 40px rgba(0,0,0,0.04); border-radius: 16px; padding: 30px;">
-          <h5 style="font-size:17px;font-weight:800;margin-bottom:24px;color:var(--primary);letter-spacing:-0.02em; display:flex; align-items:center; gap:8px">
+          <h5 style="font-size:17px;font-weight:800;margin-bottom:6px;color:var(--primary);letter-spacing:-0.02em; display:flex; align-items:center; gap:8px">
             <i class="fa fa-magnifying-glass" style="color:var(--primary)"></i> Search Bus
           </h5>
-          <form action="<?= APP_URL ?>/passenger/search_bus.php" method="GET">
+          <?php if ($isPassenger): ?>
+            <p style="font-size:12px;color:var(--gray-600);margin-bottom:18px">
+              Welcome back, <strong><?= htmlspecialchars(explode(' ', $loggedUser['name'])[0]) ?></strong>! Where are you heading today?
+            </p>
+          <?php else: ?>
+            <p style="font-size:12px;color:var(--gray-600);margin-bottom:18px">Find available buses between any two stops.</p>
+          <?php endif; ?>
+
+          <?php if ($isPassenger): ?>
+            <!-- Logged-in: form goes directly to search page -->
+            <form action="<?= APP_URL ?>/passenger/search_bus.php" method="GET">
+          <?php else: ?>
+            <!-- Guest: clicking Search redirects to login -->
+            <form id="homeSearchForm" action="<?= APP_URL ?>/auth/login.php" method="GET" onsubmit="return homeSearchRedirect(event)">
+          <?php endif; ?>
             <div class="row g-3">
               <div class="col-6">
                 <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">From</label>
                 <div style="position:relative">
                   <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
-                  <input type="text" name="src" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Tirunelveli" required>
+                  <input type="text" name="src" id="homeSrc" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Tirunelveli" <?= $isPassenger ? 'required' : '' ?>>
                 </div>
               </div>
               <div class="col-6">
                 <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">To</label>
                 <div style="position:relative">
                   <i class="fa fa-location-dot" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400)"></i>
-                  <input type="text" name="dst" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Valliyoor" required>
+                  <input type="text" name="dst" id="homeDst" list="bus-stops" class="form-control-custom" style="padding-left:36px; border-radius:10px;" placeholder="Valliyoor" <?= $isPassenger ? 'required' : '' ?>>
                 </div>
               </div>
               <div class="col-6">
                 <label class="form-label" style="font-size:12.5px;font-weight:700;color:var(--gray-600)">Date</label>
                 <div style="position:relative">
                   <i class="fa fa-calendar-days" style="position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--gray-400); pointer-events:none"></i>
-                  <input type="date" name="date" class="form-control-custom" style="padding-left:36px; border-radius:10px;" value="<?= date('Y-m-d') ?>" required>
+                  <input type="date" name="date" class="form-control-custom" style="padding-left:36px; border-radius:10px;" value="<?= date('Y-m-d') ?>" <?= $isPassenger ? 'required' : '' ?>>
                 </div>
               </div>
               <div class="col-6 d-flex align-items-end">
@@ -170,13 +238,19 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
                 </button>
               </div>
             </div>
-            
             <datalist id="bus-stops">
               <?php foreach ($stops as $stop): ?>
                 <option value="<?= htmlspecialchars($stop) ?>"></option>
               <?php endforeach; ?>
             </datalist>
           </form>
+
+          <?php if (!$isPassenger): ?>
+            <p style="font-size:12px;color:var(--gray-600);margin-top:14px;text-align:center">
+              <a href="<?= APP_URL ?>/auth/login.php" style="color:var(--primary);font-weight:700">Login</a> or
+              <a href="<?= APP_URL ?>/auth/register.php" style="color:var(--primary);font-weight:700">Register</a> to book tickets
+            </p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
