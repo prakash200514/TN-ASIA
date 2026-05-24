@@ -742,6 +742,9 @@ form.addEventListener('submit', async e => {
 
 if ('<?= $src ?>' && '<?= $dst ?>') form.dispatchEvent(new Event('submit'));
 
+/* ── Global bus data store (avoids quote-escaping in onclick attrs) ── */
+const _busData = [];
+
 /* ── Bus card builder ── */
 function busCard(b, date) {
   const typeColors = {
@@ -752,15 +755,15 @@ function busCard(b, date) {
   const avail = parseInt(b.available_seats);
   const ac    = avail > 10 ? '#166534' : avail > 0 ? '#854d0e' : '#991b1b';
 
-  /* Safely encode bus data for onclick */
-  const bd = JSON.stringify({
+  /* Store bus data safely in an array; pass only index to onclick */
+  const idx = _busData.push({
     bus_number: b.bus_number, bus_type: b.bus_type,
     source: b.source, destination: b.destination,
     departure_time: b.departure_time, arrival_time: b.arrival_time,
     estimated_time: b.estimated_time, fare: b.fare,
     available_seats: b.available_seats, schedule_id: b.schedule_id,
     delay_minutes: b.delay_minutes, date: date
-  });
+  }) - 1;
 
   return `
   <div class="card mb-3 animate-fade" style="border-left:4px solid ${tc}">
@@ -810,7 +813,7 @@ function busCard(b, date) {
         <div class="d-flex gap-2 flex-wrap">
           <button class="btn-primary-custom btn-sm-custom"
             style="background:linear-gradient(135deg,#7c3aed,#2563eb);border:none;cursor:pointer"
-            onclick='openJourney(${bd.replace(/'/g,"\\'")})'
+            onclick="openJourney(${idx})"
             title="Animated journey preview">
             <i class="fa fa-play-circle"></i> View Journey
           </button>
@@ -845,8 +848,8 @@ const TYPE_CHIP_STYLE = {
   mini:         'background:#fef9c3;color:#854d0e',
 };
 
-function openJourney(b) {
-  if (typeof b === 'string') b = JSON.parse(b);
+function openJourney(idx) {
+  const b = _busData[idx];
 
   /* header */
   document.getElementById('jBusNum').textContent = b.bus_number;
