@@ -995,3 +995,477 @@ img { max-width: 100%; }
 }
 
 .empty-state i { font-size: 48px; opacity: .3; display: block; margin-bottom: 12px; }
+
+/* ============================================================
+   BUS JOURNEY ANIMATION MODAL
+   ============================================================ */
+
+/* ── Keyframes ── */
+@keyframes roadScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes busBounce {
+  0%, 100% { transform: translateY(0px); }
+  25%       { transform: translateY(-3px); }
+  75%       { transform: translateY(2px); }
+}
+
+@keyframes wheelSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes cloudDrift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-120%); }
+}
+
+@keyframes treeDrift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-200%); }
+}
+
+@keyframes mountainDrift {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-60%); }
+}
+
+@keyframes exhaustPuff {
+  0%   { opacity: 0.7; transform: scale(0.5) translateX(0) translateY(0); }
+  100% { opacity: 0;   transform: scale(2)   translateX(-30px) translateY(-20px); }
+}
+
+@keyframes progressFill {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+@keyframes journeyModalIn {
+  0%   { opacity: 0; transform: scale(0.9) translateY(30px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes journeyModalOut {
+  0%   { opacity: 1; transform: scale(1) translateY(0); }
+  100% { opacity: 0; transform: scale(0.9) translateY(20px); }
+}
+
+@keyframes busHeadlight {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
+
+@keyframes infoSlideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Modal Overlay ── */
+.journey-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.journey-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Modal Box ── */
+.journey-modal {
+  background: #fff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 680px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.4);
+  animation: journeyModalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  position: relative;
+}
+
+.journey-modal.closing {
+  animation: journeyModalOut 0.3s ease forwards;
+}
+
+/* ── Modal Header ── */
+.journey-modal-header {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
+  color: #fff;
+  padding: 20px 24px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-modal-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.journey-modal-header::after {
+  content: '';
+  position: absolute;
+  bottom: -50px; left: 30%;
+  width: 200px; height: 120px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.journey-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.journey-bus-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+}
+
+.journey-close-btn {
+  width: 34px; height: 34px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.journey-close-btn:hover { background: rgba(255,255,255,0.3); }
+
+.journey-route-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.journey-stop {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.journey-stop .stop-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.journey-stop .stop-name {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.journey-route-arrow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.journey-route-line {
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.35);
+  position: relative;
+  border-radius: 2px;
+}
+
+.journey-route-line::after {
+  content: '✈';
+  font-size: 14px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+  background: #1d4ed8;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.journey-route-duration {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 600;
+}
+
+/* ── Scene (Animation Canvas) ── */
+.journey-scene {
+  background: linear-gradient(180deg, #87ceeb 0%, #b8e4f5 40%, #c8e6b0 65%, #8fbe6b 75%, #6b9b42 80%, #a0785a 100%);
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sky gradient extras */
+.journey-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(139,90,43,0.15) 100%);
+  pointer-events: none;
+}
+
+/* ── Mountains (background layer) ── */
+.scene-mountains {
+  position: absolute;
+  bottom: 62px;
+  left: 0;
+  width: 300%;
+  display: flex;
+  gap: 0;
+  animation: mountainDrift 12s linear infinite;
+  will-change: transform;
+}
+
+.scene-mountains svg { flex-shrink: 0; }
+
+/* ── Clouds ── */
+.scene-clouds {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 300%;
+  animation: cloudDrift 18s linear infinite;
+  will-change: transform;
+}
+
+/* ── Trees / Scenery ── */
+.scene-trees {
+  position: absolute;
+  bottom: 58px;
+  left: 0;
+  width: 300%;
+  display: flex;
+  align-items: flex-end;
+  animation: treeDrift 6s linear infinite;
+  will-change: transform;
+}
+
+/* ── Road ── */
+.scene-road {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #525252;
+}
+
+.scene-road::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 300%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #fbbf24 0px, #fbbf24 40px,
+    transparent 40px, transparent 80px
+  );
+  animation: roadScroll 1.5s linear infinite;
+  transform: translateY(-50%);
+}
+
+.scene-road::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 6px;
+  background: #3d3d3d;
+}
+
+/* ── Bus wrapper ── */
+.scene-bus-wrap {
+  position: absolute;
+  bottom: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: busBounce 0.5s ease-in-out infinite;
+  z-index: 10;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+}
+
+/* ── Exhaust puffs ── */
+.exhaust-container {
+  position: absolute;
+  bottom: 20px;
+  right: 100%;
+  width: 30px;
+  height: 20px;
+  overflow: visible;
+}
+
+.exhaust-puff {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(200,200,200,0.8);
+  border-radius: 50%;
+  animation: exhaustPuff 1.2s ease-out infinite;
+}
+
+.exhaust-puff:nth-child(2) { animation-delay: 0.4s; }
+.exhaust-puff:nth-child(3) { animation-delay: 0.8s; }
+
+/* ── Progress Bar ── */
+.journey-progress-section {
+  padding: 16px 24px 0;
+}
+
+.journey-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gray-600);
+  margin-bottom: 8px;
+}
+
+.journey-progress-bar {
+  height: 8px;
+  background: var(--gray-100);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.journey-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #10b981);
+  border-radius: 99px;
+  animation: progressFill 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  width: 0%;
+}
+
+/* ── Info Grid ── */
+.journey-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--gray-100);
+  margin: 16px 0 0;
+}
+
+.journey-info-item {
+  background: var(--white);
+  padding: 14px 16px;
+  text-align: center;
+  animation: infoSlideIn 0.4s ease both;
+}
+
+.journey-info-item:nth-child(1) { animation-delay: 0.1s; }
+.journey-info-item:nth-child(2) { animation-delay: 0.2s; }
+.journey-info-item:nth-child(3) { animation-delay: 0.3s; }
+.journey-info-item:nth-child(4) { animation-delay: 0.4s; }
+
+.journey-info-value {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gray-800);
+  line-height: 1;
+}
+
+.journey-info-label {
+  font-size: 10px;
+  color: var(--gray-600);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-top: 4px;
+}
+
+/* ── Action Buttons ── */
+.journey-modal-footer {
+  display: flex;
+  gap: 12px;
+  padding: 16px 24px 20px;
+  align-items: center;
+}
+
+.journey-book-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  text-decoration: none;
+}
+
+.journey-book-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.4);
+  color: #fff;
+}
+
+.journey-dismiss-btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--gray-200);
+  background: var(--white);
+  color: var(--gray-600);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.journey-dismiss-btn:hover {
+  background: var(--gray-100);
+  border-color: var(--gray-400);
+}
+
+/* ── Bus type badge colors ── */
+.jtype-ordinary { background: #dcfce7; color: #14532d; }
+.jtype-express   { background: #dbeafe; color: #1d4ed8; }
+.jtype-super_express { background: #ede9fe; color: #6d28d9; }
+.jtype-ac        { background: #ccfbf1; color: #0f766e; }
+.jtype-mini      { background: #fef9c3; color: #854d0e; }
+
