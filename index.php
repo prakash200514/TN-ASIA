@@ -328,6 +328,17 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     </div>
     <div class="row g-4">
       <?php
+      // Feature link map for logged-in passengers
+      $featureLinks = [
+        'Search Buses'  => APP_URL . '/passenger/search_bus.php',
+        'Book Tickets'  => APP_URL . '/passenger/search_bus.php',
+        'Live Tracking' => APP_URL . '/passenger/live_tracking.php',
+        'Bus Pass'      => APP_URL . '/passenger/bus_pass.php',
+        'Complaints'    => APP_URL . '/passenger/complaints.php',
+        'Lost & Found'  => APP_URL . '/passenger/lost_found.php',
+        'AI Chatbot'    => APP_URL . '/passenger/chatbot.php',
+        'Analytics'     => APP_URL . '/passenger/dashboard.php',
+      ];
       $features = [
         ['🔍','Search Buses','Find routes by source and destination with real-time seat availability.','#e6f4ea','#14532d'],
         ['🎫','Book Tickets','Select seats, pay online, and download your QR code ticket instantly.','#eff6ff','#2563eb'],
@@ -338,24 +349,69 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         ['🤖','AI Chatbot','Ask the AI assistant about routes, timings, and how to use the system.','#fef2f2','#ef4444'],
         ['📊','Analytics','Ministers and managers get full performance dashboards with charts.','#f0f9ff','#0284c7'],
       ];
-      $idx = 0;
+      $fidx = 0;
       foreach ($features as [$icon,$title,$desc,$bg,$color]):
-        $delayClass = 'delay-' . (($idx % 4) + 1);
-        $idx++;
+        $delayClass = 'delay-' . (($fidx % 4) + 1);
+        $fidx++;
+        $cardLink = $isPassenger ? ($featureLinks[$title] ?? APP_URL . '/auth/login.php') : APP_URL . '/auth/login.php';
       ?>
       <div class="col-sm-6 col-lg-3 animate-fade-up <?= $delayClass ?>">
-        <div class="feature-card">
-          <div class="feature-icon" style="background:<?= $bg ?>;color:<?= $color ?>"><?= $icon ?></div>
-          <h3 style="font-size:16px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em"><?= $title ?></h3>
-          <p style="font-size:13px;color:#6c757d;margin:0;line-height:1.5"><?= $desc ?></p>
-        </div>
+        <a href="<?= $cardLink ?>" style="text-decoration:none;display:block;height:100%">
+          <div class="feature-card" style="cursor:pointer">
+            <div class="feature-icon" style="background:<?= $bg ?>;color:<?= $color ?>"><?= $icon ?></div>
+            <h3 style="font-size:16px;font-weight:700;margin-bottom:10px;letter-spacing:-0.01em"><?= $title ?></h3>
+            <p style="font-size:13px;color:#6c757d;margin:0;line-height:1.5"><?= $desc ?></p>
+            <?php if ($isPassenger): ?>
+              <div style="margin-top:10px;font-size:12px;font-weight:700;color:<?= $color ?>">
+                Open &rarr;
+              </div>
+            <?php endif; ?>
+          </div>
+        </a>
       </div>
       <?php endforeach; ?>
     </div>
   </div>
 </section>
 
-<!-- Role Login Cards -->
+<?php if ($isPassenger): ?>
+<!-- Quick Actions for logged-in passengers -->
+<section class="py-5" style="background:#fff" id="services">
+  <div class="container">
+    <div class="text-center mb-5 animate-fade-up">
+      <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em">Your Quick Actions</h2>
+      <p class="text-muted" style="font-size:15px">Everything you need in one tap, <?= htmlspecialchars(explode(' ', $loggedUser['name'])[0]) ?>!</p>
+    </div>
+    <div class="row g-3 justify-content-center">
+      <?php
+      $qactions = [
+        ['🔍','Search Bus',    'Find your route now', APP_URL.'/passenger/search_bus.php',  '#eff6ff','#2563eb'],
+        ['🎫','My Tickets',   'View all bookings',   APP_URL.'/passenger/my_tickets.php',  '#ecfdf5','#059669'],
+        ['🪪','Bus Pass',     'Apply or renew pass', APP_URL.'/passenger/bus_pass.php',    '#faf5ff','#9333ea'],
+        ['📍','Live Track',   'Track bus in real-time',APP_URL.'/passenger/live_tracking.php','#fff7ed','#d97706'],
+        ['💬','Complaints',   'Report an issue',     APP_URL.'/passenger/complaints.php',  '#fef9c3','#854d0e'],
+        ['📦','Lost & Found', 'Report / claim items',APP_URL.'/passenger/lost_found.php',  '#f0fdfa','#0d9488'],
+        ['🤖','AI Chatbot',  'Ask route questions',  APP_URL.'/passenger/chatbot.php',     '#fef2f2','#ef4444'],
+        ['⚙️','Dashboard',    'Full passenger panel',APP_URL.'/passenger/dashboard.php',   '#f0f9ff','#0284c7'],
+      ];
+      foreach ($qactions as $qi => [$qicon,$qname,$qdesc,$qurl,$qbg,$qcol]):
+        $qdelay = 'delay-' . (($qi % 4) + 1);
+      ?>
+      <div class="col-6 col-sm-4 col-md-3 animate-fade-up <?= $qdelay ?>">
+        <a href="<?= $qurl ?>" style="text-decoration:none">
+          <div class="card p-3 text-center h-100" style="border-radius:14px;border:1.5px solid <?= $qbg ?>;transition:all .2s;cursor:pointer" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:32px;margin-bottom:8px"><?= $qicon ?></div>
+            <div style="font-weight:700;font-size:14px;color:<?= $qcol ?>;margin-bottom:4px"><?= $qname ?></div>
+            <div style="font-size:11.5px;color:#6c757d"><?= $qdesc ?></div>
+          </div>
+        </a>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php else: ?>
+<!-- Login By Role (guests only) -->
 <section class="py-5" style="background:#fff">
   <div class="container">
     <div class="text-center mb-5 animate-fade-up">
@@ -387,6 +443,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 <!-- Depots Section -->
 <section class="py-5">
@@ -433,5 +490,27 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= APP_URL ?>/assets/js/main.js"></script>
+<?php if (!$isPassenger): ?>
+<script>
+/* Guest search: store what they typed, redirect to login, then back to search */
+function homeSearchRedirect(e) {
+  e.preventDefault();
+  const src  = document.getElementById('homeSrc')?.value.trim() || '';
+  const dst  = document.getElementById('homeDst')?.value.trim() || '';
+  const date = document.querySelector('#homeSearchForm [name="date"]')?.value || '';
+  if (!src || !dst) {
+    alert('Please enter both From and To stops to search buses.');
+    return false;
+  }
+  /* Redirect to login with a redirect_back param so after login they land on search */
+  const searchUrl = encodeURIComponent(
+    '<?= APP_URL ?>/passenger/search_bus.php?src=' + encodeURIComponent(src) +
+    '&dst=' + encodeURIComponent(dst) + '&date=' + encodeURIComponent(date)
+  );
+  window.location.href = '<?= APP_URL ?>/auth/login.php?redirect=' + searchUrl;
+  return false;
+}
+</script>
+<?php endif; ?>
 </body>
 </html>
