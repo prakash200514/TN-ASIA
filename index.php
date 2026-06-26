@@ -86,7 +86,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         </a>
         <!-- User avatar dropdown -->
         <div class="dropdown">
-          <button class="btn btn-sm d-flex align-items-center gap-2 fw-bold" style="border-radius:10px;background:var(--primary-light);color:var(--primary);border:1px solid rgba(37,99,235,.2);font-size:13px" data-bs-toggle="dropdown">
+          <button class="btn btn-sm d-flex align-items-center gap-2 fw-bold" style="border-radius:10px;background:var(--primary-light);color:var(--primary);border:1px solid rgba(var(--primary-rgb),.2);font-size:13px" data-bs-toggle="dropdown">
             <div style="width:28px;height:28px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0">
               <?= strtoupper(substr($loggedUser['name'], 0, 1)) ?>
             </div>
@@ -122,7 +122,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6 animate-fade-right">
-        <div class="mb-2" style="display:inline-block;background:rgba(37,99,235,0.08);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--primary);letter-spacing:1px;font-weight:700">
+        <div class="mb-2" style="display:inline-block;background:rgba(var(--primary-rgb),0.08);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--primary);letter-spacing:1px;font-weight:700">
           🏛️ GOVERNMENT OF TAMIL NADU
         </div>
         <h1 style="font-size:clamp(32px,4.5vw,48px);font-weight:800;line-height:1.2;color:var(--gray-800);margin-top:12px;letter-spacing:-0.03em">
@@ -165,9 +165,9 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
           
           <svg viewBox="0 0 200 70" width="180" style="position:absolute; bottom:0; left:30px">
             <rect x="5" y="55" width="170" height="10" rx="3" fill="#cbd5e1" />
-            <rect x="10" y="15" width="160" height="40" rx="8" fill="#2563eb" />
-            <rect x="10" y="32" width="160" height="23" fill="#1d4ed8" />
-            <path d="M 40 15 L 130 15 L 120 10 L 50 10 Z" fill="#1e40af" />
+            <rect x="10" y="15" width="160" height="40" rx="8" fill="#FF671F" />
+            <rect x="10" y="32" width="160" height="23" fill="#046A38" />
+            <path d="M 40 15 L 130 15 L 120 10 L 50 10 Z" fill="#06038D" />
             <path d="M 10 20 Q 5 20 5 27 L 5 45 L 20 45 L 20 20 Z" fill="#0f172a" />
             <path d="M 7 23 L 18 23 L 18 42 L 7 42 Z" fill="#60a5fa" opacity="0.8" />
             <rect x="25" y="20" width="22" height="15" rx="2" fill="#60a5fa" opacity="0.8" />
@@ -260,7 +260,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       <!-- Depots -->
       <div class="col-6 col-lg-3 animate-fade-up delay-1">
         <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
-          <div style="width:48px;height:48px;background:#eff6ff;color:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+          <div style="width:48px;height:48px;background:var(--primary-light);color:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
             <i class="fa fa-building"></i>
           </div>
           <div>
@@ -341,7 +341,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       ];
       $features = [
         ['🔍','Search Buses','Find routes by source and destination with real-time seat availability.','#e6f4ea','#14532d'],
-        ['🎫','Book Tickets','Select seats, pay online, and download your QR code ticket instantly.','#eff6ff','#2563eb'],
+        ['🎫','Book Tickets','Select seats, pay online, and download your QR code ticket instantly.','var(--primary-light)','var(--primary)'],
         ['📍','Live Tracking','Track any TNSTC Tirunelveli bus live on Google Maps.','#fff7ed','#d97706'],
         ['🪪','Bus Pass','Apply for monthly or student bus pass online with document upload.','#faf5ff','#9333ea'],
         ['💬','Complaints','Submit complaints on delay, behavior, cleanliness and track resolution.','#fef9c3','#854d0e'],
@@ -385,7 +385,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     <div class="row g-3 justify-content-center">
       <?php
       $qactions = [
-        ['🔍','Search Bus',    'Find your route now', APP_URL.'/passenger/search_bus.php',  '#eff6ff','#2563eb'],
+        ['🔍','Search Bus',    'Find your route now', APP_URL.'/passenger/search_bus.php',  'var(--primary-light)','var(--primary)'],
         ['🎫','My Tickets',   'View all bookings',   APP_URL.'/passenger/my_tickets.php',  '#ecfdf5','#059669'],
         ['🪪','Bus Pass',     'Apply or renew pass', APP_URL.'/passenger/bus_pass.php',    '#faf5ff','#9333ea'],
         ['📍','Live Track',   'Track bus in real-time',APP_URL.'/passenger/live_tracking.php','#fff7ed','#d97706'],

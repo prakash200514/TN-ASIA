@@ -46,7 +46,7 @@ include __DIR__ . '/../includes/header.php';
 
 /* ── Modal header ── */
 .jm-header {
-  background: linear-gradient(135deg,#1e3a8a,#2563eb 55%,#0284c7);
+  background: linear-gradient(135deg,#FF671F,#06038D 55%,#046A38);
   color:#fff; padding:18px 22px 14px; position:relative; overflow:hidden;
 }
 .jm-header::before {
@@ -96,7 +96,7 @@ include __DIR__ . '/../includes/header.php';
 .jm-line::after {
   content:'🚌'; font-size:14px; position:absolute; top:50%; left:50%;
   transform:translate(-50%,-50%);
-  background: #1e3a8a; padding:0 4px; border-radius:4px;
+  background: var(--primary-dark); padding:0 4px; border-radius:4px;
 }
 .jm-dur { font-size:11px; opacity:.65; font-weight:600; }
 
@@ -285,7 +285,7 @@ include __DIR__ . '/../includes/header.php';
 }
 .jm-progress-fill {
   height:100%;
-  background: linear-gradient(90deg,#2563eb,#10b981);
+  background: linear-gradient(90deg,var(--primary),var(--accent));
   border-radius:99px;
   width:0%;
   /* animation applied via JS so it restarts each open */
@@ -312,14 +312,14 @@ include __DIR__ . '/../includes/header.php';
 }
 .jm-book-btn {
   flex:1; display:flex; align-items:center; justify-content:center; gap:8px;
-  background:linear-gradient(135deg,#1e3a8a,#2563eb);
+  background:linear-gradient(135deg,var(--primary-dark),var(--primary));
   color:#fff; border:none; padding:11px 18px;
   border-radius:12px; font-size:14px; font-weight:700;
   cursor:pointer; transition:all .2s;
-  box-shadow:0 4px 14px rgba(37,99,235,.3);
+  box-shadow:0 4px 14px rgba(var(--primary-rgb),.3);
   text-decoration:none;
 }
-.jm-book-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(37,99,235,.4); color:#fff; }
+.jm-book-btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(var(--primary-rgb),.4); color:#fff; }
 .jm-close-btn2 {
   padding:11px 16px; border-radius:12px;
   border:1px solid var(--gray-200); background:#fff;
@@ -579,11 +579,11 @@ include __DIR__ . '/../includes/header.php';
         -->
         <svg id="busSVG" width="220" height="90" viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- ── Body ── -->
-          <rect id="busBody1" x="8"  y="6"  width="200" height="62" rx="10" fill="#1d4ed8"/>
-          <rect id="busBody2" x="8"  y="40" width="200" height="28" rx="0"  fill="#1e40af"/>
-          <rect id="busBody3" x="8"  y="59" width="200" height="9"  rx="0"  fill="#1e3a8a"/>
+          <rect id="busBody1" x="8"  y="6"  width="200" height="62" rx="10" fill="#FF671F"/>
+          <rect id="busBody2" x="8"  y="40" width="200" height="28" rx="0"  fill="#FFFFFF"/>
+          <rect id="busBody3" x="8"  y="59" width="200" height="9"  rx="0"  fill="#046A38"/>
           <!-- Roof highlight -->
-          <rect x="14" y="6"  width="190" height="5"  rx="5"  fill="#3b82f6" opacity=".6"/>
+          <rect x="14" y="6"  width="190" height="5"  rx="5"  fill="#FFFFFF" opacity=".4"/>
           <!-- Undercarriage -->
           <rect x="14" y="66" width="188" height="6"  rx="0"  fill="#0f172a" opacity=".8"/>
 
@@ -664,7 +664,7 @@ include __DIR__ . '/../includes/header.php';
     <div class="jm-progress-section">
       <div class="jm-progress-label">
         <span id="jPFrom">—</span>
-        <span style="color:#2563eb;font-size:10.5px;font-weight:700">🚌 En Route</span>
+        <span style="color:var(--primary);font-size:10.5px;font-weight:700">🚌 En Route</span>
         <span id="jPTo">—</span>
       </div>
       <div class="jm-progress-bar">
@@ -748,8 +748,8 @@ const _busData = [];
 /* ── Bus card builder ── */
 function busCard(b, date) {
   const typeColors = {
-    ordinary:     '#14532d', express: '#1d4ed8',
-    super_express:'#7c3aed', ac: '#0f766e', mini:'#854d0e'
+    ordinary:     '#046A38', express: '#06038D',
+    super_express:'#FF671F', ac: '#046A38', mini:'#FF671F'
   };
   const tc    = typeColors[b.bus_type] || '#6c757d';
   const avail = parseInt(b.available_seats);
@@ -812,7 +812,7 @@ function busCard(b, date) {
         </div>
         <div class="d-flex gap-2 flex-wrap">
           <button class="btn-primary-custom btn-sm-custom"
-            style="background:linear-gradient(135deg,#7c3aed,#2563eb);border:none;cursor:pointer"
+            style="background:linear-gradient(135deg,var(--primary),var(--accent));border:none;cursor:pointer"
             onclick="openJourney(${idx})"
             title="Animated journey preview">
             <i class="fa fa-play-circle"></i> View Journey
@@ -834,18 +834,18 @@ const modal    = document.getElementById('journeyModal');
 
 /* Bus type → body colour palette [dark, mid, light] */
 const BUS_COLORS = {
-  ordinary:     ['#14532d','#166534','#15803d'],
-  express:      ['#1e3a8a','#1d4ed8','#2563eb'],
-  super_express:['#4c1d95','#6d28d9','#7c3aed'],
-  ac:           ['#134e4a','#0f766e','#0d9488'],
-  mini:         ['#713f12','#92400e','#b45309'],
+  ordinary:     ['#FF671F','#FFFFFF','#046A38'],
+  express:      ['#FF671F','#FFFFFF','#046A38'],
+  super_express:['#FF671F','#FFFFFF','#046A38'],
+  ac:           ['#FF671F','#FFFFFF','#046A38'],
+  mini:         ['#FF671F','#FFFFFF','#046A38'],
 };
 const TYPE_CHIP_STYLE = {
-  ordinary:     'background:#dcfce7;color:#14532d',
-  express:      'background:#dbeafe;color:#1d4ed8',
-  super_express:'background:#ede9fe;color:#6d28d9',
-  ac:           'background:#ccfbf1;color:#0f766e',
-  mini:         'background:#fef9c3;color:#854d0e',
+  ordinary:     'background:#e6f4ea;color:#046A38',
+  express:      'background:#ebebff;color:#06038D',
+  super_express:'background:#fff2eb;color:#FF671F',
+  ac:           'background:#e0f2fe;color:#06038D',
+  mini:         'background:#fff7ed;color:#FF671F',
 };
 
 function openJourney(idx) {

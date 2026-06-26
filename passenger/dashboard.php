@@ -45,7 +45,7 @@ include __DIR__ . '/../includes/header.php';
       ['📍','Track Bus','Live bus location map','live_tracking.php','#d97706'],
       ['💬','Complaints','Submit or track complaints','complaints.php','#854d0e'],
       ['📦','Lost & Found','Report or claim items','lost_found.php','#0d9488'],
-      ['🤖','AI Chatbot','Ask route questions','chatbot.php','#0284c7'],
+      ['🤖','AI Chatbot','Ask route questions','chatbot.php','#06038D'],
     ];
     $aidx = 0;
     foreach ($actions as [$icon,$label,$desc,$href,$color]):

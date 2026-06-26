@@ -131,7 +131,7 @@ All default test accounts have preset passwords. Use them to access their respec
 
 
 *Developed for the Department of Transport, Government of Tamil Nadu.*
-=======
+======
 🚌 TNSTC Smart Bus Management System (Tirunelveli District)
 An enterprise-grade, role-based web application designed for the Tamil Nadu State Transport Corporation (TNSTC) – Tirunelveli District. It provides a comprehensive digital platform connecting passengers, drivers/conductors, depot managers, the administration, and state governance (district minister).
 
@@ -249,4 +249,4 @@ Driver / Conductor	driver1@tnstc.tn.gov.in	Driver@123
 Conductor	conductor1@tnstc.tn.gov.in	Driver@123
 Passenger	arun@gmail.com	Pass@123
 Developed for the Department of Transport, Government of Tamil Nadu.s
->>>>>>> bda5fa890c9652c34d16ffd450bb629422e1f276
+>>>>>>bda5fa890c9652c34d16ffd450bb629422e1f276
