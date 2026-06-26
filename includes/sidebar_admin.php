@@ -58,7 +58,7 @@ if ($role === 'admin') {
 
 <aside class="sidebar" id="appSidebar">
   <div class="sidebar-brand">
-    <div style="width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px">🚌</div>
+    <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="object-fit: contain;">
     <div class="sidebar-brand-text">
       <div class="brand-name">TNSTC</div>
       <div class="brand-sub">Tirunelveli District</div>
