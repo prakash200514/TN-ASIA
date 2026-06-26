@@ -38,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
 <div class="auth-card animate-fade">
   <div class="auth-card-header">
-    <div class="auth-logo">📧</div>
+    <div class="auth-logo">
+      <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="width: 48px; height: 48px; object-fit: contain;">
+    </div>
     <h1>Email Verification</h1>
     <p>Enter the 6-digit OTP sent to <strong><?= htmlspecialchars($email) ?></strong></p>
   </div>
