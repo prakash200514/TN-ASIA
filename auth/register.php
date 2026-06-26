@@ -55,7 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
 <div class="auth-card animate-fade" style="max-width:500px">
   <div class="auth-card-header">
-    <div class="auth-logo">👤</div>
+    <div class="auth-logo">
+      <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="width: 48px; height: 48px; object-fit: contain;">
+    </div>
     <h1>Create Passenger Account</h1>
     <p>TNSTC Tirunelveli – Passenger Self-Registration</p>
   </div>

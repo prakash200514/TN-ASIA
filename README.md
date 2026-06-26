@@ -6,8 +6,8 @@ An enterprise-grade, role-based web application designed for the **Tamil Nadu St
 
 ## 🚀 Project Overview
 
-The **TNSTC Smart Bus System** streamlines transport logistics, passenger ticketing, pass verification, emergency management, and real-time operations for the **7 key depots** in Tirunelveli District:
-1. **Thamirabarani Depot** (Vannarpettai)
+**TNSTC Smart Bus System** streamlines transport logistics, passenger ticketing, pass verification, emergency management, and real-time operations for the **7 key depots** in Tirunelveli District:
+1. ** The Thamirabarani Depot** (Vannarpettai)
 2. **Bye-Pass Depot** (Vannarpettai)
 3. **Kattabomman Nagar Depot** (KTC Nagar)
 4. **Cheranmahadevi Depot** (Cheranmahadevi)

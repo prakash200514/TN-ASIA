@@ -28,7 +28,9 @@ $pageTitle = 'Login';
 <div class="auth-card animate-fade">
   <!-- Header -->
   <div class="auth-card-header">
-    <div class="auth-logo">🚌</div>
+    <div class="auth-logo">
+      <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="width: 48px; height: 48px; object-fit: contain;">
+    </div>
     <h1>TNSTC Smart Bus System</h1>
     <p>Tirunelveli District — Secure Login</p>
   </div>
