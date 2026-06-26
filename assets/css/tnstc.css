@@ -5,17 +5,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --primary:       #2563eb; /* Cobalt blue primary */
-  --primary-rgb:   37, 99, 235;
-  --primary-dark:  #1d4ed8;
-  --primary-light: #eff6ff;
-  --accent:        #10b981; /* Emerald green accent */
-  --accent-rgb:    16, 185, 129;
-  --accent-dark:   #059669;
+  --primary:       #FF671F; /* Indian Saffron */
+  --primary-rgb:   255, 103, 31;
+  --primary-dark:  #E05210;
+  --primary-light: #FFF3EB;
+  --accent:        #046A38; /* India Green */
+  --accent-rgb:    4, 106, 56;
+  --accent-dark:   #03522C;
   --danger:        #ef4444;
-  --warning:       #f59e0b;
-  --success:       #10b981;
-  --info:          #06b6d4;
+  --warning:       #FF671F;
+  --success:       #046A38;
+  --info:          #06038D; /* Ashoka Chakra Navy Blue */
   --white:         #ffffff;
   --gray-50:       #f8fafc;
   --gray-100:      #f1f5f9;
@@ -135,7 +135,7 @@ img { max-width: 100%; }
 /* Sidebar */
 .sidebar {
   width: var(--sidebar-w);
-  background: linear-gradient(180deg, var(--primary-dark) 0%, var(--primary) 100%);
+  background: linear-gradient(180deg, #06038D 0%, #030252 100%);
   color: var(--white);
   display: flex;
   flex-direction: column;
@@ -196,7 +196,7 @@ img { max-width: 100%; }
 .sidebar-link.active {
   background: rgba(255,255,255,.12);
   color: var(--white);
-  border-left-color: var(--warning);
+  border-left-color: var(--primary);
 }
 
 .sidebar-link i { width: 18px; text-align: center; font-size: 15px; }
@@ -451,13 +451,13 @@ img { max-width: 100%; }
   align-items: center;
   gap: 8px;
   transition: background var(--transition), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 4px 12px rgba(20, 83, 45, 0.12);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
 }
 
 .btn-primary-custom:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(20, 83, 45, 0.25);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.25);
   color: var(--white);
 }
 
@@ -478,13 +478,13 @@ img { max-width: 100%; }
   align-items: center;
   gap: 8px;
   transition: background var(--transition), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.15);
 }
 
 .btn-accent-custom:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.25);
   color: var(--white);
 }
 
@@ -734,7 +734,7 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, #0d4a28 40%, #1a3a5c 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #06038D 50%, var(--accent) 100%);
   padding: 20px;
 }
 
@@ -815,7 +815,7 @@ img { max-width: 100%; }
   right: -10%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(50px);
   pointer-events: none;
@@ -828,7 +828,7 @@ img { max-width: 100%; }
   left: -10%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(40px);
   pointer-events: none;
@@ -1102,7 +1102,7 @@ img { max-width: 100%; }
 
 /* ── Modal Header ── */
 .journey-modal-header {
-  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #06038D 50%, var(--accent) 100%);
   color: #fff;
   padding: 20px 24px 16px;
   position: relative;
@@ -1215,7 +1215,7 @@ img { max-width: 100%; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
-  background: #1d4ed8;
+  background: var(--primary-dark);
   padding: 2px 4px;
   border-radius: 4px;
 }
@@ -1369,7 +1369,7 @@ img { max-width: 100%; }
 
 .journey-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #2563eb, #10b981);
+  background: linear-gradient(90deg, var(--primary), var(--accent));
   border-radius: 99px;
   animation: progressFill 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   width: 0%;
@@ -1426,7 +1426,7 @@ img { max-width: 100%; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
   color: #fff;
   border: none;
   padding: 12px 20px;
@@ -1435,13 +1435,13 @@ img { max-width: 100%; }
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb),0.3);
   text-decoration: none;
 }
 
 .journey-book-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37,99,235,0.4);
+  box-shadow: 0 8px 20px rgba(var(--primary-rgb),0.4);
   color: #fff;
 }
 
@@ -1463,9 +1463,9 @@ img { max-width: 100%; }
 }
 
 /* ── Bus type badge colors ── */
-.jtype-ordinary { background: #dcfce7; color: #14532d; }
-.jtype-express   { background: #dbeafe; color: #1d4ed8; }
-.jtype-super_express { background: #ede9fe; color: #6d28d9; }
-.jtype-ac        { background: #ccfbf1; color: #0f766e; }
-.jtype-mini      { background: #fef9c3; color: #854d0e; }
+.jtype-ordinary { background: #e6f4ea; color: #046A38; }
+.jtype-express   { background: #ebebff; color: #06038D; }
+.jtype-super_express { background: #fff2eb; color: #FF671F; }
+.jtype-ac        { background: #e0f2fe; color: #06038D; }
+.jtype-mini      { background: #fff7ed; color: #FF671F; }
 
