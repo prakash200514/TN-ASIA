@@ -26,7 +26,7 @@ An   enterprise-grade, role-based web application designed for the **Tamil Nadu 
 
 ## 👥 User Roles & Features
 
-### 1. 🧑‍💼 Passenger Portal
+## 1. 🧑‍💼 Passenger Portal
 - **Secure Authentication**: Registration and Login with OTP email verification (`auth/otp_verify.php`) and password recovery.
 - **Search Bus**: Search bus schedules and route stops with real-time seat availability (`passenger/search_bus.php`).
 - **Ticket Booking**: Interactive seat selector, online payment simulation, and instant PDF/QR code ticket generation (`passenger/book_ticket.php`).
