@@ -4,7 +4,7 @@
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS `tnstc_tirunelveli` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `tnstc_tirunelveli`;<
+USE `tnstc_tirunelveli`;<<
 
 -- ============================================================
 -- TABLE: users (all roles)
