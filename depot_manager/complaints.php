@@ -1,6 +1,6 @@
 <?php
 // depot_manager/complaints.php
-require_once __DIR__ . '/../config/db.php';<<<<<<
+require_once __DIR__ . '/../config/db.php';<<<<<<<
 requireLogin('depot_manager');
 $uid=(int)currentUser()['id']; $db=getDB();
 $depot=$db->query("SELECT * FROM depots WHERE manager_id=$uid LIMIT 1")->fetch(); if(!$depot) die('No depot.');
