@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../config/db.php';
 requireLogin('admin');
 $db = getDB();
-<<<<<<<
+<<<<<<
 $users      = $db->query("SELECT COUNT(*) FROM users")->fetchColumn();
 $buses      = $db->query("SELECT COUNT(*) FROM buses")->fetchColumn();
 $routes     = $db->query("SELECT COUNT(*) FROM routes")->fetchColumn();
