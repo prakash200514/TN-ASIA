@@ -89,7 +89,7 @@ $pageTitle = 'Login';
     </div>
 
     <!-- Demo hints -->
-    <div class="mt-3 p-3 rounded" style="background:#f8f9fa;font-size:11px;color:#6c757d;line-height:1.8">
+    <div class="auth-demo-hint mt-3 p-3 rounded">
       <strong>Demo Credentials:</strong><br>
       Admin: admin@tnstc.tn.gov.in / password<br>
       Minister: minister@tnstc.tn.gov.in / password<br>
