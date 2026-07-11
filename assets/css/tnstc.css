@@ -734,9 +734,23 @@ img { max-width: 100%; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary) 0%, #06038D 50%, var(--accent) 100%);
+  background: url('../images/tnstc_bus_bg.png') no-repeat center center;
+  background-size: cover;
+  position: relative;
   padding: 20px;
+  z-index: 1;
 }
+
+.auth-page::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
 
 .auth-card {
   background: rgba(255, 255, 255, 0.45);
