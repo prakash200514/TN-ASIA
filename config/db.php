@@ -1,5 +1,5 @@
 <?php
-<
+
 // ============================================================
 // TNSTC Smart Bus Management System
 // config/db.php – Database connection & global constants
