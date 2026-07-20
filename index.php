@@ -1,4 +1,4 @@
-<?php
+<?php <<<
 require_once __DIR__ . '/config/db.php';
 startAppSession();
 // Redirect staff roles to their dashboards; passengers stay on the homepage
