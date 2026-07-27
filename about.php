@@ -872,7 +872,7 @@ $pageTitle = 'About Us – TNSTC Tirunelveli';
             <div class="col-6">
               <div class="leader-card">
                 <img src="<?= APP_URL ?>/assets/images/cm_profile.jpg" alt="CM" class="leader-avatar">
-                <div class="leader-name">Joseph Vijay</div>
+                <div class="leader-name">C. Joseph Vijay</div>
                 <div class="leader-role">Chief Minister, TVK · Tamil Nadu</div>
               </div>
             </div>
