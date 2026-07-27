@@ -473,6 +473,9 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
   </div>
 </section>
 
+<!-- Contact Us Section -->
+<?php include __DIR__ . '/includes/contact_footer.php'; ?>
+
 <!-- Footer -->
 <footer style="background:#1a1d23;color:rgba(255,255,255,.7);padding:32px 0;margin-top:20px">
   <div class="container text-center">
