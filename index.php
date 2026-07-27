@@ -43,9 +43,24 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     .hero-stat .lbl { font-size:12px; opacity:.7; text-transform:uppercase; letter-spacing:1px; }
     .navbar-landing { background:linear-gradient(90deg,#124d2b,#1a6b3c); }
     .wave { display:block; width:100%; height:60px; }
+    /* ── Hero search widget – glass inputs ── */
+    .landing-hero .form-label { color: rgba(255,255,255,.75) !important; font-weight:600; }
+    .landing-hero .form-control-custom {
+      background: rgba(255,255,255,.12) !important;
+      border: 1px solid rgba(255,255,255,.25) !important;
+      color: #fff !important;
+      backdrop-filter: blur(8px);
+    }
+    .landing-hero .form-control-custom::placeholder { color: rgba(255,255,255,.5) !important; }
+    .landing-hero .form-control-custom:focus { border-color: rgba(255,255,255,.6) !important; box-shadow: 0 0 0 3px rgba(255,255,255,.12) !important; }
+    .landing-hero h5 { color: #fff !important; }
+    .landing-hero .search-widget h5 { color: #fff !important; }
+    .landing-hero .search-widget p { color: rgba(255,255,255,.8) !important; }
+    .landing-hero .search-widget a { color: rgba(255,255,255,.75) !important; }
+    .landing-hero .search-widget strong { color: #fff !important; }
   </style>
 </head>
-<body style="background:#f8f9fa">
+<body style="background:#0f172a">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white px-4 py-3" style="box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid var(--gray-200);">
@@ -252,11 +267,14 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       </div>
     </div>
 
+    <!-- Photo Credit -->
+    <div class="photo-credit">📍 Tirunelveli New Bus Stand · TNSTC</div>
+
     <!-- Hero Stats Cards -->
     <div class="row g-3 mt-5">
       <!-- Depots -->
       <div class="col-6 col-lg-3 animate-fade-up delay-1">
-        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid rgba(255,255,255,.2); border-radius: 12px; background: rgba(255,255,255,.12); backdrop-filter: blur(14px); box-shadow: 0 10px 25px rgba(0,0,0,.2)">
           <div style="width:48px;height:48px;background:var(--primary-light);color:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
             <i class="fa fa-building"></i>
           </div>
