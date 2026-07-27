@@ -51,7 +51,10 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
 <nav class="navbar navbar-expand-lg bg-white px-4 py-3" style="box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid var(--gray-200);">
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="<?= APP_URL ?>" style="color: var(--primary)">
-      <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="height: 40px; width: auto; object-fit: contain;">
+      <div class="emblem-brand-container">
+        <img src="<?= APP_URL ?>/assets/images/cm_profile.jpg" alt="CM Profile" class="emblem-profile-bg" title="Chief Minister Office">
+        <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" class="emblem-logo-main">
+      </div>
       <div>
         <div style="font-size:16px;line-height:1;font-weight:800;letter-spacing:-0.02em">TNSTC</div>
         <div style="font-size:9px;color:var(--gray-600);letter-spacing:1px;font-weight:600">TIRUNELVELI DISTRICT</div>

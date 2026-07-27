@@ -1548,3 +1548,65 @@ img { max-width: 100%; }
 .jtype-ac        { background: #e0f2fe; color: #06038D; }
 .jtype-mini      { background: #fff7ed; color: #FF671F; }
 
+/* ============================================================
+   EMBLEM & PROFILE ALIGNMENT
+   ============================================================ */
+.emblem-brand-container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  vertical-align: middle;
+}
+
+.emblem-profile-bg {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid #166534; /* Green accent matching emblem theme */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  position: relative;
+  z-index: 1;
+  margin-right: -12px; /* Layered aligned behind emblem */
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.emblem-logo-main {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+  flex-shrink: 0;
+}
+
+.emblem-brand-container:hover .emblem-profile-bg {
+  transform: scale(1.08) translateX(-3px);
+}
+
+/* Sidebar branding adjustments */
+.sidebar-brand .emblem-profile-bg {
+  width: 34px;
+  height: 34px;
+  border-color: rgba(255,255,255,0.8);
+}
+
+.sidebar-brand .emblem-logo-main {
+  height: 38px;
+}
+
+/* Auth card header logo adjustments */
+.auth-logo .emblem-profile-bg {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #ffffff;
+  margin-right: -14px;
+}
+
+.auth-logo .emblem-logo-main {
+  height: 48px;
+}
+
