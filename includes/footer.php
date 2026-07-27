@@ -1,4 +1,9 @@
-<?php // includes/footer.php ?>
+<?php 
+// includes/footer.php
+if (!isset($hideContactFooter) || !$hideContactFooter) {
+    include __DIR__ . '/contact_footer.php';
+}
+?>
   <!-- Bootstrap 5 JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- TNSTC Main JS -->
