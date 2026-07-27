@@ -55,8 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="auth-page">
 <div class="auth-card animate-fade" style="max-width:500px">
   <div class="auth-card-header">
-    <div class="auth-logo">
-      <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" style="width: 48px; height: 48px; object-fit: contain;">
+    <div class="auth-logo" style="width:auto;height:auto;background:transparent;">
+      <div class="emblem-brand-container">
+        <img src="<?= APP_URL ?>/assets/images/cm_profile.jpg" alt="CM Profile" class="emblem-profile-bg" title="Chief Minister Office">
+        <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" class="emblem-logo-main">
+      </div>
     </div>
     <h1>Create Passenger Account</h1>
     <p>TNSTC Tirunelveli – Passenger Self-Registration</p>
