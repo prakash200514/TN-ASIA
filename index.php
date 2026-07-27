@@ -43,22 +43,47 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     .hero-stat .lbl { font-size:12px; opacity:.7; text-transform:uppercase; letter-spacing:1px; }
     .navbar-landing { background:linear-gradient(90deg,#124d2b,#1a6b3c); }
     .wave { display:block; width:100%; height:60px; }
-    /* ── Hero search widget – glass inputs ── */
-    .landing-hero .form-label { color: rgba(255,255,255,.75) !important; font-weight:600; }
-    .landing-hero .form-control-custom {
-      background: rgba(255,255,255,.12) !important;
-      border: 1px solid rgba(255,255,255,.25) !important;
-      color: #fff !important;
+
+    /* ══ HERO PHOTO BACKGROUND – text visibility fixes ══ */
+
+    /* Main heading & description */
+    .landing-hero h1.hero-heading {
+      color: #ffffff !important;
+      text-shadow: 0 2px 24px rgba(0,0,0,.7), 0 1px 4px rgba(0,0,0,.9);
+    }
+    .landing-hero p.hero-desc {
+      color: rgba(255,255,255,.90) !important;
+      text-shadow: 0 1px 8px rgba(0,0,0,.6);
+    }
+    .landing-hero .hero-badge-pill {
+      background: rgba(255,255,255,.15) !important;
+      color: #fde68a !important;
+      border: 1px solid rgba(255,255,255,.25);
       backdrop-filter: blur(8px);
     }
-    .landing-hero .form-control-custom::placeholder { color: rgba(255,255,255,.5) !important; }
-    .landing-hero .form-control-custom:focus { border-color: rgba(255,255,255,.6) !important; box-shadow: 0 0 0 3px rgba(255,255,255,.12) !important; }
-    .landing-hero h5 { color: #fff !important; }
-    .landing-hero .search-widget h5 { color: #fff !important; }
-    .landing-hero .search-widget p { color: rgba(255,255,255,.8) !important; }
-    .landing-hero .search-widget a { color: rgba(255,255,255,.75) !important; }
-    .landing-hero .search-widget strong { color: #fff !important; }
+
+    /* Glass search widget */
+    .landing-hero .search-widget h5    { color: #ffffff !important; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+    .landing-hero .search-widget p     { color: rgba(255,255,255,.82) !important; }
+    .landing-hero .search-widget a     { color: #fbbf24 !important; }
+    .landing-hero .search-widget strong{ color: #ffffff !important; }
+    .landing-hero .form-label          { color: rgba(255,255,255,.75) !important; font-weight:600; font-size:12.5px; }
+    .landing-hero .form-control-custom {
+      background: rgba(255,255,255,.14) !important;
+      border: 1px solid rgba(255,255,255,.3) !important;
+      color: #ffffff !important;
+      backdrop-filter: blur(8px);
+    }
+    .landing-hero .form-control-custom::placeholder { color: rgba(255,255,255,.45) !important; }
+    .landing-hero .form-control-custom:focus {
+      border-color: rgba(255,255,255,.65) !important;
+      box-shadow: 0 0 0 3px rgba(255,255,255,.12) !important;
+      background: rgba(255,255,255,.18) !important;
+    }
+    /* Date input calendar icon color */
+    .landing-hero input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
   </style>
+
 </head>
 <body style="background:#0f172a">
 
@@ -134,13 +159,13 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-6 animate-fade-right">
-        <div class="mb-2" style="display:inline-block;background:rgba(var(--primary-rgb),0.08);padding:6px 14px;border-radius:20px;font-size:12px;color:var(--primary);letter-spacing:1px;font-weight:700">
+        <div class="hero-badge-pill mb-2" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.15);padding:7px 16px;border-radius:20px;font-size:12px;color:#fde68a;letter-spacing:1px;font-weight:700;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(8px)">
           🏛️ GOVERNMENT OF TAMIL NADU
         </div>
-        <h1 style="font-size:clamp(32px,4.5vw,48px);font-weight:800;line-height:1.2;color:var(--gray-800);margin-top:12px;letter-spacing:-0.03em">
+        <h1 class="hero-heading" style="font-size:clamp(32px,4.5vw,52px);font-weight:800;line-height:1.15;color:#ffffff;margin-top:12px;letter-spacing:-0.03em;text-shadow:0 2px 24px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,1)">
           TNSTC Smart Bus<br>Management System
         </h1>
-        <p style="color:var(--gray-600);font-size:16px;margin:20px 0 32px;line-height:1.6">
+        <p class="hero-desc" style="color:rgba(255,255,255,.92);font-size:16px;margin:20px 0 32px;line-height:1.65;text-shadow:0 1px 8px rgba(0,0,0,.7)">
           Tirunelveli District — 7 Depots · Book tickets, track buses live, apply passes, and more — all in one platform.
         </p>
         <div class="d-flex gap-3 flex-wrap">
@@ -148,14 +173,14 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
             <a href="<?= APP_URL ?>/passenger/search_bus.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
               <i class="fa fa-search"></i> Search Bus
             </a>
-            <a href="<?= APP_URL ?>/passenger/dashboard.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
+            <a href="<?= APP_URL ?>/passenger/dashboard.php" class="btn-primary-custom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none;border-radius:8px;backdrop-filter:blur(8px)">
               <i class="fa fa-gauge"></i> My Dashboard
             </a>
           <?php else: ?>
             <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
               <i class="fa fa-user-plus"></i> Get Started
             </a>
-            <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:transparent;color:var(--primary);border:1px solid var(--gray-200);box-shadow:none;border-radius:8px">
+            <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none;border-radius:8px;backdrop-filter:blur(8px)">
               <i class="fa fa-right-to-bracket"></i> Login
             </a>
           <?php endif; ?>
@@ -279,47 +304,47 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
             <i class="fa fa-building"></i>
           </div>
           <div>
-            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalDepots ?></div>
-            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Depots</div>
+            <div style="font-size:24px;font-weight:800;color:#fff;line-height:1.1"><?= $totalDepots ?></div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Depots</div>
           </div>
         </div>
       </div>
       
       <!-- Active Buses -->
       <div class="col-6 col-lg-3 animate-fade-up delay-2">
-        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid rgba(255,255,255,.2); border-radius: 12px; background: rgba(255,255,255,.12); backdrop-filter: blur(14px); box-shadow: 0 10px 25px rgba(0,0,0,.2)">
           <div style="width:48px;height:48px;background:#ecfdf5;color:#10b981;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
             <i class="fa fa-bus"></i>
           </div>
           <div>
-            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalBuses ?></div>
-            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Active Buses</div>
+            <div style="font-size:24px;font-weight:800;color:#fff;line-height:1.1"><?= $totalBuses ?></div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Active Buses</div>
           </div>
         </div>
       </div>
       
       <!-- Routes -->
       <div class="col-6 col-lg-3 animate-fade-up delay-3">
-        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid rgba(255,255,255,.2); border-radius: 12px; background: rgba(255,255,255,.12); backdrop-filter: blur(14px); box-shadow: 0 10px 25px rgba(0,0,0,.2)">
           <div style="width:48px;height:48px;background:#faf5ff;color:#8b5cf6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
             <i class="fa fa-route"></i>
           </div>
           <div>
-            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalRoutes ?></div>
-            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Routes</div>
+            <div style="font-size:24px;font-weight:800;color:#fff;line-height:1.1"><?= $totalRoutes ?></div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Routes</div>
           </div>
         </div>
       </div>
       
       <!-- Passengers -->
       <div class="col-6 col-lg-3 animate-fade-up delay-4">
-        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.02)">
-          <div style="width:48px;height:48px;background:#fff7ed;color:#f59e0b;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
+        <div class="card p-3 d-flex flex-row align-items-center gap-3" style="border: 1px solid rgba(255,255,255,.2); border-radius: 12px; background: rgba(255,255,255,.12); backdrop-filter: blur(14px); box-shadow: 0 10px 25px rgba(0,0,0,.2)">
+          <div style="width:48px;height:48px;background:rgba(245,158,11,.25);color:#fbbf24;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">
             <i class="fa fa-users"></i>
           </div>
           <div>
-            <div style="font-size:24px;font-weight:800;color:var(--gray-800);line-height:1.1"><?= $totalUsers ?>+</div>
-            <div style="font-size:11px;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Passengers</div>
+            <div style="font-size:24px;font-weight:800;color:#fff;line-height:1.1"><?= $totalUsers ?>+</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:0.5px;font-weight:700;margin-top:2px">Passengers</div>
           </div>
         </div>
       </div>
@@ -335,7 +360,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
 </section>
 
 <!-- Features -->
-<section class="py-5">
+<section class="py-5" style="background:#f8f9fa">
   <div class="container">
     <div class="text-center mb-5 animate-fade-up">
       <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em">Everything You Need</h2>
