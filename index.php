@@ -64,7 +64,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     <div class="collapse navbar-collapse justify-content-center" id="navbarLandingContent">
       <ul class="navbar-nav gap-4">
         <li class="nav-item"><a class="nav-link active fw-bold" style="font-size:14.5px; border-bottom: 2px solid var(--primary); padding-bottom: 4px; color: var(--primary) !important" href="#">Home</a></li>
-        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#about">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="<?= APP_URL ?>/about.php">About Us</a></li>
         <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#services">Services</a></li>
         <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#routes">Routes</a></li>
         <li class="nav-item"><a class="nav-link text-muted fw-bold" style="font-size:14.5px;" href="#depots">Depots</a></li>
