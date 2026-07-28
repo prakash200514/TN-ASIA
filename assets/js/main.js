@@ -1,7 +1,7 @@
 // ============================================================
 // TNSTC – main.js  (global utilities)
 // ============================================================
-<<<<<<<<<<<
+<<<<<<<<<<
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Sidebar toggle (mobile) ── */
