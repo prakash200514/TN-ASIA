@@ -1,4 +1,4 @@
-<?php ///////
+<?php //////
 // api/tracking.php – Returns live bus locations
 require_once __DIR__ . '/../config/db.php';
 header('Content-Type: application/json');
