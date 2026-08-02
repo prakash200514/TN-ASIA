@@ -1,4 +1,4 @@
-<?php 
+<?php >>>>>>>>>>>>>>>>>
 require_once __DIR__ . '/../config/db.php';
 startAppSession();
 // Already logged in → redirect to appropriate dashboard
