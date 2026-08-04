@@ -171,27 +171,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Automatic Scroll-Reveal & Stagger Assignment ── */
   const autoAnimateSelectors = [
-    '.card:not(.animate-fade-up):not(.animate-fade-left):not(.animate-fade-right)',
+    '.card:not(.animate-fade-up):not(.animate-fade-left):not(.animate-fade-right):not(.animate-scale-in)',
     '.depot-card:not(.animate-fade-up)',
     '.feature-card:not(.animate-fade-up)',
     '.stat-card:not(.animate-fade-up)',
     '.timeline-item:not(.animate-fade-up)',
     '.service-card:not(.animate-fade-up)',
     '.route-card:not(.animate-fade-up)',
-    '.step-card:not(.animate-fade-up)'
+    '.step-card:not(.animate-fade-up)',
+    '.role-card'
   ];
 
   document.querySelectorAll(autoAnimateSelectors.join(',')).forEach((el) => {
     el.classList.add('animate-fade-up');
-    
-    // Auto-stagger siblings inside grid containers
-    if (el.parentElement) {
-      const siblings = Array.from(el.parentElement.children);
-      const index = siblings.indexOf(el);
-      if (index >= 0 && index < 8) {
-        el.classList.add(`delay-${(index % 8) + 1}`);
+  });
+
+  // Assign sequential auto-stagger delay (delay-1 to delay-10) to all grid row children
+  document.querySelectorAll('.row').forEach(row => {
+    const animChildren = row.querySelectorAll('.animate-fade-up, .animate-scale-in, .animate-zoom-in, .animate-fade-left, .animate-fade-right, .scroll-reveal, [class*="col-"]');
+    animChildren.forEach((child, idx) => {
+      const hasDelay = Array.from(child.classList).some(c => c.startsWith('delay-'));
+      if (!hasDelay) {
+        child.classList.add(`delay-${(idx % 10) + 1}`);
       }
-    }
+    });
   });
 
   /* ── Scroll Reveal IntersectionObserver ── */

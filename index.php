@@ -391,7 +391,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       ];
       $fidx = 0;
       foreach ($features as [$icon,$title,$desc,$bg,$color]):
-        $delayClass = 'delay-' . (($fidx % 4) + 1);
+        $delayClass = 'delay-' . ($fidx + 1);
         $fidx++;
         $cardLink = $isPassenger ? ($featureLinks[$title] ?? APP_URL . '/auth/login.php') : APP_URL . '/auth/login.php';
       ?>
