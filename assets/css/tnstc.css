@@ -76,29 +76,89 @@
 }
 
 /* Animation Utility Classes & Scroll Reveal */
-.animate-fade-in { opacity: 0; transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.animate-fade-in {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
 .animate-fade-in.reveal { opacity: 1; }
 
-.animate-fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-fade-up.reveal { opacity: 1; transform: translateY(0); }
+.animate-fade-up {
+  opacity: 0;
+  transform: translateY(45px) scale(0.94);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-fade-up.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
-.animate-fade-down { opacity: 0; transform: translateY(-32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-fade-down.reveal { opacity: 1; transform: translateY(0); }
+.animate-fade-down {
+  opacity: 0;
+  transform: translateY(-45px) scale(0.94);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-fade-down.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
 
-.animate-fade-left { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-fade-left.reveal { opacity: 1; transform: translateX(0); }
+.animate-fade-left {
+  opacity: 0;
+  transform: translateX(-45px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-fade-left.reveal {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-.animate-fade-right { opacity: 0; transform: translateX(32px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-fade-right.reveal { opacity: 1; transform: translateX(0); }
+.animate-fade-right {
+  opacity: 0;
+  transform: translateX(45px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-fade-right.reveal {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-.animate-scale-in, .animate-zoom-in { opacity: 0; transform: scale(0.90); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-scale-in.reveal, .animate-zoom-in.reveal { opacity: 1; transform: scale(1); }
+.animate-scale-in, .animate-zoom-in {
+  opacity: 0;
+  transform: scale(0.85) translateY(25px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-scale-in.reveal, .animate-zoom-in.reveal {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
 
-.animate-flip-up { opacity: 0; transform: perspective(800px) rotateX(20deg) translateY(30px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.animate-flip-up.reveal { opacity: 1; transform: perspective(800px) rotateX(0deg) translateY(0); }
+.animate-flip-up {
+  opacity: 0;
+  transform: perspective(800px) rotateX(25deg) translateY(35px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.animate-flip-up.reveal {
+  opacity: 1;
+  transform: perspective(800px) rotateX(0deg) translateY(0);
+}
 
-.scroll-reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-.scroll-reveal.reveal { opacity: 1; transform: translateY(0); }
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.scroll-reveal.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-shimmer {
@@ -107,14 +167,16 @@
   animation: shimmer 1.5s infinite;
 }
 
-.delay-1 { transition-delay: 0.08s !important; }
-.delay-2 { transition-delay: 0.16s !important; }
-.delay-3 { transition-delay: 0.24s !important; }
-.delay-4 { transition-delay: 0.32s !important; }
-.delay-5 { transition-delay: 0.40s !important; }
-.delay-6 { transition-delay: 0.48s !important; }
-.delay-7 { transition-delay: 0.56s !important; }
-.delay-8 { transition-delay: 0.64s !important; }
+.delay-1 { transition-delay: 0.10s !important; }
+.delay-2 { transition-delay: 0.20s !important; }
+.delay-3 { transition-delay: 0.30s !important; }
+.delay-4 { transition-delay: 0.40s !important; }
+.delay-5 { transition-delay: 0.50s !important; }
+.delay-6 { transition-delay: 0.60s !important; }
+.delay-7 { transition-delay: 0.70s !important; }
+.delay-8 { transition-delay: 0.80s !important; }
+.delay-9 { transition-delay: 0.90s !important; }
+.delay-10 { transition-delay: 1.00s !important; }
 
 /* ── Top Scroll Progress Bar ── */
 .scroll-progress-bar {
