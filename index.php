@@ -163,7 +163,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
           🏛️ GOVERNMENT OF TAMIL NADU
         </div>
         <h1 class="hero-heading" style="font-size:clamp(32px,4.5vw,52px);font-weight:800;line-height:1.15;color:#ffffff;margin-top:12px;letter-spacing:-0.03em;text-shadow:0 2px 24px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,1)">
-          TNSTC Smart Bus<br>Management System
+          TNSTC Smart Bus
         </h1>
         <p class="hero-desc" style="color:rgba(255,255,255,.92);font-size:16px;margin:20px 0 32px;line-height:1.65;text-shadow:0 1px 8px rgba(0,0,0,.7)">
           Tirunelveli District — 7 Depots · Book tickets, track buses live, apply passes, and more — all in one platform.
