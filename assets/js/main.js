@@ -103,7 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Scroll Handler: Progress Bar, Top Btn & Navbar State ── */
+  /* ── Scroll Handler: Progress Bar, Top Btn & Smart Moving Navbar ── */
+  let lastScrollTop = 0;
+  const navbars = document.querySelectorAll('.landing-nav, .top-navbar, .navbar, .about-navbar');
+
   function onWindowScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -121,14 +124,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    const navbars = document.querySelectorAll('.landing-nav, .top-navbar, .navbar');
+    // Smart Moving Navbar Action
     navbars.forEach(nav => {
-      if (scrollTop > 30) {
-        nav.classList.add('navbar-scrolled');
+      if (scrollTop <= 15) {
+        // At the top of the page
+        nav.classList.remove('navbar-scrolled', 'navbar-hidden');
+        nav.classList.add('navbar-at-top');
       } else {
-        nav.classList.remove('navbar-scrolled');
+        nav.classList.remove('navbar-at-top');
+        nav.classList.add('navbar-scrolled');
+
+        // Check scroll direction
+        if (scrollTop > lastScrollTop && scrollTop > 90) {
+          // Scrolling DOWN -> Hide navbar smoothly
+          nav.classList.add('navbar-hidden');
+        } else {
+          // Scrolling UP -> Reveal navbar smoothly
+          nav.classList.remove('navbar-hidden');
+        }
       }
     });
+
+    lastScrollTop = Math.max(0, scrollTop);
   }
 
   window.addEventListener('scroll', onWindowScroll, { passive: true });
