@@ -531,6 +531,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="<?= APP_URL ?>/assets/js/main.js"></script>
 <?php if (!$isPassenger): ?>

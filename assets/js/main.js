@@ -56,6 +56,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ── Ultra-Smooth Inertia Momentum Scroll Engine ── */
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth exponential decay curve
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smoothWheel: true,
+      smoothTouch: false,
+      touchMultiplier: 1.5,
+    });
+
+    function lenisRaf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(lenisRaf);
+    }
+    requestAnimationFrame(lenisRaf);
+
+    lenis.on('scroll', () => {
+      onWindowScroll();
+    });
+  }
+
   /* ── Smooth Scroll & Progress Bar Setup ── */
   let scrollProgressBar = document.getElementById('scrollProgressBar');
   if (!scrollProgressBar) {
@@ -75,10 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(scrollToTopBtn);
 
     scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      if (lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     });
   }
 
@@ -90,14 +118,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetEl = document.querySelector(targetId);
         if (targetEl) {
           e.preventDefault();
-          const navOffset = 80;
-          const elementPosition = targetEl.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+          if (lenis) {
+            lenis.scrollTo(targetEl, { offset: -80, duration: 1.2 });
+          } else {
+            const navOffset = 80;
+            const elementPosition = targetEl.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navOffset;
 
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
         }
       }
     });
