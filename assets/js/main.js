@@ -124,28 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Smart Moving Navbar Action
+    // Sticky Fixed Glassmorphic Navbar on Scroll
     navbars.forEach(nav => {
-      if (scrollTop <= 15) {
-        // At the top of the page
-        nav.classList.remove('navbar-scrolled', 'navbar-hidden');
-        nav.classList.add('navbar-at-top');
-      } else {
-        nav.classList.remove('navbar-at-top');
+      if (scrollTop > 20) {
         nav.classList.add('navbar-scrolled');
-
-        // Check scroll direction
-        if (scrollTop > lastScrollTop && scrollTop > 90) {
-          // Scrolling DOWN -> Hide navbar smoothly
-          nav.classList.add('navbar-hidden');
-        } else {
-          // Scrolling UP -> Reveal navbar smoothly
-          nav.classList.remove('navbar-hidden');
-        }
+      } else {
+        nav.classList.remove('navbar-scrolled');
       }
     });
-
-    lastScrollTop = Math.max(0, scrollTop);
   }
 
   window.addEventListener('scroll', onWindowScroll, { passive: true });

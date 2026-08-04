@@ -88,7 +88,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
 <body style="background:#0f172a">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white px-4 py-3" style="box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid var(--gray-200);">
+<nav class="navbar navbar-expand-lg sticky-top bg-white px-4 py-3" style="box-shadow: 0 4px 20px rgba(0,0,0,0.03); border-bottom: 1px solid var(--gray-200); z-index: 1030;">
   <div class="container-fluid d-flex align-items-center justify-content-between">
     <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="<?= APP_URL ?>" style="color: var(--primary)">
       <div class="emblem-brand-container">

@@ -168,44 +168,29 @@
   transform: translateY(-2px) scale(0.98);
 }
 
-/* ── Smart Moving Navbar on Scroll ── */
+/* ── Sticky Fixed Navbar on Scroll ── */
 .smart-scroll-navbar,
 nav.navbar,
 .about-navbar {
   position: sticky !important;
   top: 0;
   z-index: 1030;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.35s ease,
+  transition: background-color 0.35s ease,
               box-shadow 0.35s ease,
               padding 0.35s ease,
               backdrop-filter 0.35s ease !important;
-  will-change: transform;
 }
 
 .smart-scroll-navbar.navbar-scrolled,
 nav.navbar.navbar-scrolled,
 .about-navbar.navbar-scrolled {
-  background: rgba(255, 255, 255, 0.92) !important;
+  background: rgba(255, 255, 255, 0.94) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
-}
-
-.smart-scroll-navbar.navbar-hidden,
-nav.navbar.navbar-hidden,
-.about-navbar.navbar-hidden {
-  transform: translateY(-100%) !important;
-  box-shadow: none !important;
-}
-
-.smart-scroll-navbar.navbar-at-top,
-nav.navbar.navbar-at-top,
-.about-navbar.navbar-at-top {
-  transform: translateY(0) !important;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
