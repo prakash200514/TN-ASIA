@@ -20,6 +20,10 @@ $pageTitle = $pageTitle ?? 'TNSTC Smart Bus System';
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <!-- TNSTC Design System -->
   <link href="<?= APP_URL ?>/assets/css/tnstc.css" rel="stylesheet">
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
+  </script>
 
   <?php if (!empty($extraHead)) echo $extraHead; ?>
 </head>

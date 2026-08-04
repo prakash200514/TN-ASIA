@@ -75,7 +75,7 @@
   100% { background-position: 200% 0; }
 }
 
-/* Animation Utility Classes & Scroll Reveal */
+/* Animation Utility Classes & Grand Zoom-In Scroll Reveal */
 .animate-fade-in {
   opacity: 0;
   transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1);
@@ -83,81 +83,78 @@
 }
 .animate-fade-in.reveal { opacity: 1; }
 
-.animate-fade-up {
+.animate-zoom-in,
+.animate-scale-in,
+.animate-fade-up,
+.scroll-reveal {
   opacity: 0;
-  transform: translateY(45px) scale(0.94);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: scale(0.58) translateY(50px);
+  filter: blur(8px);
+  transition: opacity 0.85s cubic-bezier(0.34, 1.45, 0.64, 1),
+              transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1),
+              filter 0.75s ease;
+  will-change: opacity, transform, filter;
 }
-.animate-fade-up.reveal {
+
+.animate-zoom-in.reveal,
+.animate-scale-in.reveal,
+.animate-fade-up.reveal,
+.scroll-reveal.reveal {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
 }
 
 .animate-fade-down {
   opacity: 0;
-  transform: translateY(-45px) scale(0.94);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateY(-45px) scale(0.7);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), filter 0.75s ease;
+  will-change: opacity, transform, filter;
 }
 .animate-fade-down.reveal {
   opacity: 1;
   transform: translateY(0) scale(1);
+  filter: blur(0px);
 }
 
 .animate-fade-left {
   opacity: 0;
-  transform: translateX(-45px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(-45px) scale(0.7);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), filter 0.75s ease;
+  will-change: opacity, transform, filter;
 }
 .animate-fade-left.reveal {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
+  filter: blur(0px);
 }
 
 .animate-fade-right {
   opacity: 0;
-  transform: translateX(45px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: translateX(45px) scale(0.7);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), filter 0.75s ease;
+  will-change: opacity, transform, filter;
 }
 .animate-fade-right.reveal {
   opacity: 1;
-  transform: translateX(0);
-}
-
-.animate-scale-in, .animate-zoom-in {
-  opacity: 0;
-  transform: scale(0.85) translateY(25px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-.animate-scale-in.reveal, .animate-zoom-in.reveal {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateX(0) scale(1);
+  filter: blur(0px);
 }
 
 .animate-flip-up {
   opacity: 0;
-  transform: perspective(800px) rotateX(25deg) translateY(35px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  transform: perspective(800px) rotateX(25deg) translateY(35px) scale(0.7);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), transform 0.85s cubic-bezier(0.34, 1.45, 0.64, 1), filter 0.75s ease;
+  will-change: opacity, transform, filter;
 }
 .animate-flip-up.reveal {
   opacity: 1;
-  transform: perspective(800px) rotateX(0deg) translateY(0);
-}
-
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-.scroll-reveal.reveal {
-  opacity: 1;
-  transform: translateY(0);
+  transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);
+  filter: blur(0px);
 }
 
 .animate-float { animation: float 6s ease-in-out infinite; }

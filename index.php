@@ -37,6 +37,10 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="<?= APP_URL ?>/assets/css/tnstc.css" rel="stylesheet">
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    window.scrollTo(0, 0);
+  </script>
   <style>
     .hero-stat { text-align:center; color:#fff; }
     .hero-stat .num { font-size:36px; font-weight:800; display:block; }
@@ -395,7 +399,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         $fidx++;
         $cardLink = $isPassenger ? ($featureLinks[$title] ?? APP_URL . '/auth/login.php') : APP_URL . '/auth/login.php';
       ?>
-      <div class="col-sm-6 col-lg-3 animate-fade-up <?= $delayClass ?>">
+      <div class="col-sm-6 col-lg-3 animate-zoom-in <?= $delayClass ?>">
         <a href="<?= $cardLink ?>" style="text-decoration:none;display:block;height:100%">
           <div class="feature-card" style="cursor:pointer">
             <div class="feature-icon" style="background:<?= $bg ?>;color:<?= $color ?>"><?= $icon ?></div>
@@ -437,7 +441,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       foreach ($qactions as $qi => [$qicon,$qname,$qdesc,$qurl,$qbg,$qcol]):
         $qdelay = 'delay-' . (($qi % 4) + 1);
       ?>
-      <div class="col-6 col-sm-4 col-md-3 animate-fade-up <?= $qdelay ?>">
+      <div class="col-6 col-sm-4 col-md-3 animate-zoom-in <?= $qdelay ?>">
         <a href="<?= $qurl ?>" style="text-decoration:none">
           <div class="card p-3 text-center h-100" style="border-radius:14px;border:1.5px solid <?= $qbg ?>;transition:all .2s;cursor:pointer" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 28px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
             <div style="font-size:32px;margin-bottom:8px"><?= $qicon ?></div>
@@ -472,7 +476,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         $delayClass = 'delay-' . (($ridx % 5) + 1);
         $ridx++;
       ?>
-      <div class="col-sm-6 col-md-4 col-lg-2-4 animate-scale-in <?= $delayClass ?>" style="flex:0 0 auto;width:210px">
+      <div class="col-sm-6 col-md-4 col-lg-2-4 animate-zoom-in <?= $delayClass ?>" style="flex:0 0 auto;width:210px">
         <a href="<?= APP_URL ?>/auth/login.php" class="role-card">
           <div style="font-size:40px;margin-bottom:12px"><?= $icon ?></div>
           <div style="font-weight:800;font-size:15px;color:#14532d;letter-spacing:-0.02em"><?= $name ?></div>

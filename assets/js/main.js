@@ -1,8 +1,17 @@
-// ============================================================
-// TNSTC – main.js  (global utilities)
-// ============================================================
+// Disable browser scroll restoration so refresh always starts at top
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
 
 document.addEventListener('DOMContentLoaded', () => {
+  // If no anchor hash is present, scroll to top on page load/refresh
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
 
   /* ── Sidebar toggle (mobile) ── */
   const toggle  = document.getElementById('sidebarToggle');
@@ -78,6 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
     lenis.on('scroll', () => {
       onWindowScroll();
     });
+
+    if (!window.location.hash) {
+      lenis.scrollTo(0, { immediate: true });
+    }
   }
 
   /* ── Smooth Scroll & Progress Bar Setup ── */
