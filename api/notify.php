@@ -4,7 +4,7 @@ require_once __DIR__ . '/../config/db.php';
 startAppSession();
 header('Content-Type: application/json');
 if (!isLoggedIn()) { echo json_encode(['unread'=>0,'items',[]]); exit; }
->>>>>>>>
+>>>>>>>
 $db   = getDB();
 $uid  = $_SESSION['user_id'];
 $stmt = $db->prepare("SELECT * FROM notifications WHERE (user_id=? OR user_id IS NULL) ORDER BY created_at DESC LIMIT 10");
