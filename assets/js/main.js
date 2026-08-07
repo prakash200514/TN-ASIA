@@ -6,7 +6,7 @@ if ('scrollRestoration' in history) {
 window.addEventListener('beforeunload', () => {
   window.scrollTo(0, 0);
 });
->>>>>>>>>
+>>>>>>>
 document.addEventListener('DOMContentLoaded', () => {
   // If no anchor hash is present, scroll to top on page load/refresh
   if (!window.location.hash) {
