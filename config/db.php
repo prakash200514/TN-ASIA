@@ -4,7 +4,7 @@
 // TNSTC Smart Bus Management System
 // config/db.php – Database connection & global constants
 // ============================================================
->>
+>
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'tnstc_tirunelveli');
 define('DB_USER', 'root');
