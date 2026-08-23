@@ -152,7 +152,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         </div>
       <?php else: ?>
         <a href="<?= APP_URL ?>/auth/register.php" class="btn btn-outline-primary px-3 fw-bold btn-sm" style="border-radius:8px; border-color:var(--primary); color:var(--primary)">Register</a>
-        <a href="<?= APP_URL ?>/auth/login.php" class="btn btn-primary px-3 fw-bold btn-sm" style="border-radius:8px; background:var(--primary); border:none">Login</a>
+        <a href="<?= APP_URL ?>/passenger/login.php" class="btn btn-primary px-3 fw-bold btn-sm" style="border-radius:8px; background:var(--primary); border:none">Login</a>
       <?php endif; ?>
     </div>
   </div>
@@ -184,7 +184,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
             <a href="<?= APP_URL ?>/auth/register.php" class="btn-primary-custom" style="background:var(--primary);color:#fff;font-weight:700;border-radius:8px">
               <i class="fa fa-user-plus"></i> Get Started
             </a>
-            <a href="<?= APP_URL ?>/auth/login.php" class="btn-primary-custom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none;border-radius:8px;backdrop-filter:blur(8px)">
+            <a href="<?= APP_URL ?>/passenger/login.php" class="btn-primary-custom" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none;border-radius:8px;backdrop-filter:blur(8px)">
               <i class="fa fa-right-to-bracket"></i> Login
             </a>
           <?php endif; ?>
@@ -249,7 +249,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
             <form action="<?= APP_URL ?>/passenger/search_bus.php" method="GET">
           <?php else: ?>
             <!-- Guest: clicking Search redirects to login -->
-            <form id="homeSearchForm" action="<?= APP_URL ?>/auth/login.php" method="GET" onsubmit="return homeSearchRedirect(event)">
+            <form id="homeSearchForm" action="<?= APP_URL ?>/passenger/login.php" method="GET" onsubmit="return homeSearchRedirect(event)">
           <?php endif; ?>
             <div class="row g-3">
               <div class="col-6">
@@ -288,7 +288,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
 
           <?php if (!$isPassenger): ?>
             <p style="font-size:12px;color:var(--gray-600);margin-top:14px;text-align:center">
-              <a href="<?= APP_URL ?>/auth/login.php" style="color:var(--primary);font-weight:700">Login</a> or
+              <a href="<?= APP_URL ?>/passenger/login.php" style="color:var(--primary);font-weight:700">Login</a> or
               <a href="<?= APP_URL ?>/auth/register.php" style="color:var(--primary);font-weight:700">Register</a> to book tickets
             </p>
           <?php endif; ?>
@@ -397,7 +397,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
       foreach ($features as [$icon,$title,$desc,$bg,$color]):
         $delayClass = 'delay-' . ($fidx + 1);
         $fidx++;
-        $cardLink = $isPassenger ? ($featureLinks[$title] ?? APP_URL . '/auth/login.php') : APP_URL . '/auth/login.php';
+        $cardLink = $isPassenger ? ($featureLinks[$title] ?? APP_URL . '/passenger/login.php') : APP_URL . '/passenger/login.php';
       ?>
       <div class="col-sm-6 col-lg-3 animate-zoom-in <?= $delayClass ?>">
         <a href="<?= $cardLink ?>" style="text-decoration:none;display:block;height:100%">
@@ -522,7 +522,7 @@ function homeSearchRedirect(e) {
     '<?= APP_URL ?>/passenger/search_bus.php?src=' + encodeURIComponent(src) +
     '&dst=' + encodeURIComponent(dst) + '&date=' + encodeURIComponent(date)
   );
-  window.location.href = '<?= APP_URL ?>/auth/login.php?redirect=' + searchUrl;
+  window.location.href = '<?= APP_URL ?>/passenger/login.php?redirect=' + searchUrl;
   return false;
 }
 </script>

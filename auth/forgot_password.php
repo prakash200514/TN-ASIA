@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $db->prepare('UPDATE users SET password=?,otp=NULL,otp_expiry=NULL WHERE email=?')
                    ->execute([password_hash($np,PASSWORD_DEFAULT),$email]);
                 unset($_SESSION['fp_email'],$_SESSION['fp_dev_otp']);
-                redirectWithMessage(APP_URL.'/auth/login.php','success','Password reset successful. Please login.');
+                redirectWithMessage(APP_URL.'/passenger/login.php','success','Password reset successful. Please login.');
             }
         }
     }
@@ -109,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <?php endif; ?>
     <div class="text-center mt-3" style="font-size:13px">
-      <a href="<?= APP_URL ?>/auth/login.php" style="color:#1a6b3c">← Back to Login</a>
+      <a href="<?= APP_URL ?>/passenger/login.php" style="color:#1a6b3c">← Back to Login</a>
     </div>
   </div>
 </div>

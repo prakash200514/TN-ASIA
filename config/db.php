@@ -75,6 +75,8 @@ function requireLogin(string $role = ''): void {
     if (!isset($_SESSION['user_id'])) {
         if ($role === 'minister') {
             header('Location: ' . APP_URL . '/minister/login.php');
+        } elseif ($role === 'passenger') {
+            header('Location: ' . APP_URL . '/passenger/login.php');
         } else {
             header('Location: ' . APP_URL . '/auth/login.php');
         }
@@ -85,6 +87,8 @@ function requireLogin(string $role = ''): void {
         if ($role === 'driver_conductor' && in_array($_SESSION['role'], ['driver','conductor'])) return;
         if ($role === 'minister') {
             header('Location: ' . APP_URL . '/minister/login.php?err=unauthorized');
+        } elseif ($role === 'passenger') {
+            header('Location: ' . APP_URL . '/passenger/login.php?err=unauthorized');
         } else {
             header('Location: ' . APP_URL . '/auth/login.php?err=unauthorized');
         }

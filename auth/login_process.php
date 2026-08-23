@@ -11,7 +11,12 @@ $email = trim($_POST['email'] ?? '');
 $pass  = $_POST['password'] ?? '';
 $roleHint = $_POST['role_hint'] ?? '';
 
-$failRedirect = ($roleHint === 'minister') ? (APP_URL . '/minister/login.php') : (APP_URL . '/auth/login.php');
+$failRedirect = APP_URL . '/auth/login.php';
+if ($roleHint === 'minister') {
+    $failRedirect = APP_URL . '/minister/login.php';
+} elseif ($roleHint === 'passenger') {
+    $failRedirect = APP_URL . '/passenger/login.php';
+}
 
 if (!$email || !$pass) {
     header('Location: ' . $failRedirect . '?err=invalid');
@@ -55,5 +60,8 @@ $map = [
 ];
 
 $dest = APP_URL . ($map[$user['role']] ?? '/');
+if ($user['role'] === 'passenger' && !empty($_POST['redirect'])) {
+    $dest = $_POST['redirect'];
+}
 header("Location: $dest");
 exit;

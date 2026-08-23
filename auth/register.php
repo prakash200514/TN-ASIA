@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <hr class="my-3">
     <div class="text-center" style="font-size:13px">
-      Already have an account? <a href="<?= APP_URL ?>/auth/login.php" style="color:#1a6b3c;font-weight:600">Login →</a>
+      Already have an account? <a href="<?= APP_URL ?>/passenger/login.php" style="color:#1a6b3c;font-weight:600">Login →</a>
     </div>
   </div>
 </div>

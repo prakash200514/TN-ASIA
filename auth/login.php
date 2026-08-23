@@ -11,23 +11,28 @@ if (isLoggedIn()) {
     exit;
 }
 $err = $_GET['err'] ?? '';
-$selectedRole = $_GET['role'] ?? 'passenger';
+$selectedRole = $_GET['role'] ?? 'driver';
+if ($selectedRole === 'passenger') {
+    $redirParam = !empty($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : '';
+    header('Location: ' . APP_URL . '/passenger/login.php' . $redirParam);
+    exit;
+}
 if ($selectedRole === 'minister') {
     header('Location: ' . APP_URL . '/minister/login.php');
     exit;
 }
-$allowedRoles = ['passenger', 'driver', 'depot_manager', 'admin'];
+$allowedRoles = ['driver', 'depot_manager', 'admin'];
 if (!in_array($selectedRole, $allowedRoles, true)) {
-    $selectedRole = 'passenger';
+    $selectedRole = 'driver';
 }
-$pageTitle = 'Login';
+$pageTitle = 'Staff Login';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Login | TNSTC Tirunelveli</title>
+  <title>Staff Login | TNSTC Tirunelveli</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <link href="<?= APP_URL ?>/assets/css/tnstc.css" rel="stylesheet">
@@ -43,25 +48,24 @@ $pageTitle = 'Login';
         <img src="<?= APP_URL ?>/assets/images/logo.svg" alt="Tamil Nadu Government Emblem" class="emblem-logo-main">
       </div>
     </div>
-    <h1>TNSTC Smart Bus System</h1>
-    <p>Tirunelveli District — Secure Login</p>
+    <h1>TNSTC Staff Portal</h1>
+    <p>Tirunelveli District — Staff & Administration Login</p>
   </div>
 
   <!-- Body -->
   <div class="auth-card-body">
     <?php if ($err === 'unauthorized'): ?>
-      <div class="flash-banner flash-danger mb-3"><i class="fa fa-lock"></i> You are not authorized to access that page.</div>
+      <div class="flash-banner flash-danger mb-3"><i class="fa fa-lock"></i> Staff authorization required to access that panel.</div>
     <?php endif; ?>
     <?php if ($err === 'invalid'): ?>
       <div class="flash-banner flash-danger mb-3"><i class="fa fa-times-circle"></i> Invalid email or password. Please try again.</div>
     <?php endif; ?>
     <?php if ($err === 'inactive'): ?>
-      <div class="flash-banner flash-warning mb-3"><i class="fa fa-clock"></i> Your account is pending email verification.</div>
+      <div class="flash-banner flash-warning mb-3"><i class="fa fa-clock"></i> Account pending verification.</div>
     <?php endif; ?>
 
     <!-- Role Tabs -->
     <div class="auth-tabs mb-3" id="roleTabs">
-      <button class="auth-tab <?= $selectedRole === 'passenger' ? 'active' : '' ?>" data-role="passenger">Passenger</button>
       <button class="auth-tab <?= $selectedRole === 'driver' ? 'active' : '' ?>" data-role="driver">Driver/Conductor</button>
       <button class="auth-tab <?= $selectedRole === 'depot_manager' ? 'active' : '' ?>" data-role="depot_manager">Depot Mgr</button>
       <button class="auth-tab <?= $selectedRole === 'admin' ? 'active' : '' ?>" data-role="admin">Admin</button>
@@ -71,8 +75,8 @@ $pageTitle = 'Login';
       <input type="hidden" name="role_hint" id="roleHint" value="<?= htmlspecialchars($selectedRole) ?>">
 
       <div class="form-group">
-        <label class="form-label" for="email"><i class="fa fa-envelope me-1"></i>Email Address</label>
-        <input type="email" id="email" name="email" class="form-control-custom" placeholder="you@example.com" required autocomplete="username">
+        <label class="form-label" for="email"><i class="fa fa-envelope me-1"></i>Official Email</label>
+        <input type="email" id="email" name="email" class="form-control-custom" placeholder="staff@tnstc.tn.gov.in" required autocomplete="username">
       </div>
 
       <div class="form-group">
@@ -86,7 +90,7 @@ $pageTitle = 'Login';
       </div>
 
       <button type="submit" class="btn-primary-custom w-100 justify-content-center mt-1" id="loginBtn">
-        <i class="fa fa-right-to-bracket"></i> Login
+        <i class="fa fa-right-to-bracket"></i> Staff Login
       </button>
     </form>
 
@@ -96,7 +100,7 @@ $pageTitle = 'Login';
 
     <hr class="my-3">
     <div class="text-center" style="font-size:13px">
-      New passenger? <a href="<?= APP_URL ?>/auth/register.php" style="color:#1a6b3c;font-weight:600">Create Account →</a>
+      Are you a passenger? <a href="<?= APP_URL ?>/passenger/login.php" style="color:#1a6b3c;font-weight:600">Passenger Login →</a>
     </div>
   </div>
 </div>

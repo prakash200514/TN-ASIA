@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->prepare('UPDATE users SET status=?,otp=NULL,otp_expiry=NULL WHERE email=?')
            ->execute(['active',$email]);
         unset($_SESSION['reg_email'],$_SESSION['dev_otp']);
-        redirectWithMessage(APP_URL.'/auth/login.php','success','Email verified! You can now login.');
+        redirectWithMessage(APP_URL.'/passenger/login.php','success','Email verified! You can now login.');
     }
 }
 ?>
