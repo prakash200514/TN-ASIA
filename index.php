@@ -477,7 +477,7 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
         $ridx++;
       ?>
       <div class="col-sm-6 col-md-4 col-lg-2-4 animate-zoom-in <?= $delayClass ?>" style="flex:0 0 auto;width:210px">
-        <a href="<?= APP_URL ?>/auth/login.php" class="role-card">
+        <a href="<?= APP_URL ?>/auth/login.php?role=<?= urlencode($r) ?>" class="role-card">
           <div style="font-size:40px;margin-bottom:12px"><?= $icon ?></div>
           <div style="font-weight:800;font-size:15px;color:#14532d;letter-spacing:-0.02em"><?= $name ?></div>
           <div style="font-size:12px;color:#6c757d;margin-top:6px;line-height:1.4"><?= $desc ?></div>

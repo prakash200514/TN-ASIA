@@ -1,4 +1,4 @@
-<?php  >>>>
+<?php
 require_once __DIR__ . '/../config/db.php';
 startAppSession();
 // Already logged in → redirect to appropriate dashboard
@@ -11,6 +11,11 @@ if (isLoggedIn()) {
     exit;
 }
 $err = $_GET['err'] ?? '';
+$selectedRole = $_GET['role'] ?? 'passenger';
+$allowedRoles = ['passenger', 'driver', 'depot_manager', 'minister', 'admin'];
+if (!in_array($selectedRole, $allowedRoles, true)) {
+    $selectedRole = 'passenger';
+}
 $pageTitle = 'Login';
 ?>
 <!DOCTYPE html>
@@ -52,15 +57,15 @@ $pageTitle = 'Login';
 
     <!-- Role Tabs -->
     <div class="auth-tabs mb-3" id="roleTabs">
-      <button class="auth-tab active" data-role="passenger">Passenger</button>
-      <button class="auth-tab" data-role="driver">Driver/Conductor</button>
-      <button class="auth-tab" data-role="depot_manager">Depot Mgr</button>
-      <button class="auth-tab" data-role="minister">Minister</button>
-      <button class="auth-tab" data-role="admin">Admin</button>
+      <button class="auth-tab <?= $selectedRole === 'passenger' ? 'active' : '' ?>" data-role="passenger">Passenger</button>
+      <button class="auth-tab <?= $selectedRole === 'driver' ? 'active' : '' ?>" data-role="driver">Driver/Conductor</button>
+      <button class="auth-tab <?= $selectedRole === 'depot_manager' ? 'active' : '' ?>" data-role="depot_manager">Depot Mgr</button>
+      <button class="auth-tab <?= $selectedRole === 'minister' ? 'active' : '' ?>" data-role="minister">Minister</button>
+      <button class="auth-tab <?= $selectedRole === 'admin' ? 'active' : '' ?>" data-role="admin">Admin</button>
     </div>
 
     <form method="POST" action="<?= APP_URL ?>/auth/login_process.php" id="loginForm">
-      <input type="hidden" name="role_hint" id="roleHint" value="passenger">
+      <input type="hidden" name="role_hint" id="roleHint" value="<?= htmlspecialchars($selectedRole) ?>">
 
       <div class="form-group">
         <label class="form-label" for="email"><i class="fa fa-envelope me-1"></i>Email Address</label>
@@ -89,16 +94,6 @@ $pageTitle = 'Login';
     <hr class="my-3">
     <div class="text-center" style="font-size:13px">
       New passenger? <a href="<?= APP_URL ?>/auth/register.php" style="color:#1a6b3c;font-weight:600">Create Account →</a>
-    </div>
-
-    <!-- Demo hints -->
-    <div class="auth-demo-hint mt-3 p-3 rounded">
-      <strong>Demo Credentials:</strong><br>
-      Admin: admin@tnstc.tn.gov.in / password<br>
-      Minister: minister@tnstc.tn.gov.in / password<br>
-      Depot Mgr: manager1@tnstc.tn.gov.in / password<br>
-      Passenger: arun@gmail.com / password<br>
-      Driver: driver1@tnstc.tn.gov.in / password
     </div>
   </div>
 </div>
