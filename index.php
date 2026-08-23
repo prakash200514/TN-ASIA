@@ -454,39 +454,6 @@ $stops       = $db->query('SELECT stop_name FROM bus_stops ORDER BY stop_name AS
     </div>
   </div>
 </section>
-<?php else: ?>
-<!-- Login By Role (guests only) -->
-<section class="py-5" style="background:#fff">
-  <div class="container">
-    <div class="text-center mb-5 animate-fade-up">
-      <h2 style="font-size:28px;font-weight:800;letter-spacing:-0.03em">Login By Role</h2>
-      <p class="text-muted" style="font-size:15px">Select your role to access the right panel.</p>
-    </div>
-    <div class="row g-4 justify-content-center">
-      <?php
-      $roles = [
-        ['🧑‍💼','Passenger','Register, book tickets, track buses, apply passes','passenger'],
-        ['🚌','Driver / Conductor','View trips, scan QR tickets, report emergencies','driver'],
-        ['🏢','Depot Manager','Manage depot buses, staff, schedules, and reports','depot_manager'],
-        ['🏛️','TNSTC Minister','View district-wide analytics and performance reports','minister'],
-        ['⚙️','Admin','Full system administration and management','admin'],
-      ];
-      $ridx = 0;
-      foreach ($roles as [$icon,$name,$desc,$r]):
-        $delayClass = 'delay-' . (($ridx % 5) + 1);
-        $ridx++;
-      ?>
-      <div class="col-sm-6 col-md-4 col-lg-2-4 animate-zoom-in <?= $delayClass ?>" style="flex:0 0 auto;width:210px">
-        <a href="<?= APP_URL ?>/auth/login.php?role=<?= urlencode($r) ?>" class="role-card">
-          <div style="font-size:40px;margin-bottom:12px"><?= $icon ?></div>
-          <div style="font-weight:800;font-size:15px;color:#14532d;letter-spacing:-0.02em"><?= $name ?></div>
-          <div style="font-size:12px;color:#6c757d;margin-top:6px;line-height:1.4"><?= $desc ?></div>
-        </a>
-      </div>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
 <?php endif; ?>
 
 <!-- Depots Section -->
