@@ -68,27 +68,40 @@ if ($role === 'admin') {
     </div>
   </div>
 
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
   <nav class="sidebar-nav">
     <?php
     foreach ($navItems as $key => $item):
       if (is_string($item)):
     ?>
       <div class="sidebar-section-label"><?= htmlspecialchars($item) ?></div>
-    <?php else: ?>
-      <a href="<?= $item['href'] ?>" class="sidebar-link">
-        <i class="fa <?= $item['icon'] ?>"></i>
-        <?= htmlspecialchars($item['label']) ?>
+    <?php else:
+      $isActive = ($currentPage === basename($item['href'])) ? 'active' : '';
+    ?>
+      <a href="<?= $item['href'] ?>" class="sidebar-link <?= $isActive ?>">
+        <div class="sidebar-icon-box"><i class="fa <?= $item['icon'] ?>"></i></div>
+        <span><?= htmlspecialchars($item['label']) ?></span>
       </a>
     <?php endif; endforeach; ?>
 
     <div class="sidebar-section-label">Account</div>
-    <a href="<?= APP_URL ?>/auth/logout.php" class="sidebar-link">
-      <i class="fa fa-right-from-bracket"></i> Logout
+    <a href="<?= APP_URL ?>/auth/logout.php" class="sidebar-link sidebar-logout">
+      <div class="sidebar-icon-box"><i class="fa fa-right-from-bracket"></i></div>
+      <span>Logout</span>
     </a>
   </nav>
 
   <div class="sidebar-footer">
-    <strong><?= htmlspecialchars($user['name']) ?></strong><br>
-    <?= ucfirst(str_replace('_',' ', $user['role'])) ?>
+    <div class="user-card-footer d-flex align-items-center gap-2">
+      <div class="user-avatar-sm">
+        <?= strtoupper(substr($user['name'], 0, 1)) ?>
+      </div>
+      <div class="user-info-sm text-truncate">
+        <div class="user-name-sm text-truncate"><?= htmlspecialchars($user['name']) ?></div>
+        <div class="user-role-sm"><span class="online-indicator"></span> <?= ucfirst(str_replace('_',' ', $user['role'])) ?></div>
+      </div>
+    </div>
   </div>
 </aside>

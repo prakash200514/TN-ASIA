@@ -36,19 +36,27 @@ $links = [
     <div class="sidebar-section-label">Navigation</div>
     <?php foreach ($links as $l): ?>
     <a href="<?= $l['href'] ?>" class="sidebar-link <?= $currentPage === $l['file'] ? 'active' : '' ?>">
-      <i class="fa <?= $l['icon'] ?>"></i>
-      <?= $l['label'] ?>
+      <div class="sidebar-icon-box"><i class="fa <?= $l['icon'] ?>"></i></div>
+      <span><?= $l['label'] ?></span>
     </a>
     <?php endforeach; ?>
 
     <div class="sidebar-section-label">Account</div>
-    <a href="<?= APP_URL ?>/auth/logout.php" class="sidebar-link">
-      <i class="fa fa-right-from-bracket"></i> Logout
+    <a href="<?= APP_URL ?>/auth/logout.php" class="sidebar-link sidebar-logout">
+      <div class="sidebar-icon-box"><i class="fa fa-right-from-bracket"></i></div>
+      <span>Logout</span>
     </a>
   </nav>
 
   <div class="sidebar-footer">
-    <strong><?= htmlspecialchars($user['name']) ?></strong><br>
-    <span style="opacity:.6">Passenger</span>
+    <div class="user-card-footer d-flex align-items-center gap-2">
+      <div class="user-avatar-sm">
+        <?= strtoupper(substr($user['name'], 0, 1)) ?>
+      </div>
+      <div class="user-info-sm text-truncate">
+        <div class="user-name-sm text-truncate"><?= htmlspecialchars($user['name']) ?></div>
+        <div class="user-role-sm"><span class="online-indicator"></span> Passenger</div>
+      </div>
+    </div>
   </div>
 </aside>
