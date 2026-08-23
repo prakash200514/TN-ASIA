@@ -25,20 +25,34 @@ $pageTitle = 'Minister Login Portal';
   <style>
     body.minister-auth-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #091e3a 0%, #112d4e 50%, #1a365d 100%);
+      background: url('<?= APP_URL ?>/assets/images/thalamai_seyalagam.jpg') no-repeat center center;
+      background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
+      position: relative;
+      z-index: 1;
       font-family: system-ui, -apple-system, sans-serif;
+    }
+    body.minister-auth-page::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 25, 50, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: -1;
     }
     .minister-card {
       width: 100%;
       max-width: 440px;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       overflow: hidden;
     }
     .minister-card-header {
