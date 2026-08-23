@@ -9,9 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $email = trim($_POST['email'] ?? '');
 $pass  = $_POST['password'] ?? '';
+$roleHint = $_POST['role_hint'] ?? '';
+
+$failRedirect = ($roleHint === 'minister') ? (APP_URL . '/minister/login.php') : (APP_URL . '/auth/login.php');
 
 if (!$email || !$pass) {
-    header('Location: ' . APP_URL . '/auth/login.php?err=invalid');
+    header('Location: ' . $failRedirect . '?err=invalid');
     exit;
 }
 
@@ -21,17 +24,17 @@ $stmt->execute([$email]);
 $user = $stmt->fetch();
 
 if (!$user || !password_verify($pass, $user['password'])) {
-    header('Location: ' . APP_URL . '/auth/login.php?err=invalid');
+    header('Location: ' . $failRedirect . '?err=invalid');
     exit;
 }
 
 if ($user['status'] === 'pending') {
-    header('Location: ' . APP_URL . '/auth/login.php?err=inactive');
+    header('Location: ' . $failRedirect . '?err=inactive');
     exit;
 }
 
 if ($user['status'] === 'inactive') {
-    header('Location: ' . APP_URL . '/auth/login.php?err=inactive');
+    header('Location: ' . $failRedirect . '?err=inactive');
     exit;
 }
 

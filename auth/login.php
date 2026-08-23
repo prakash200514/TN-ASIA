@@ -12,7 +12,11 @@ if (isLoggedIn()) {
 }
 $err = $_GET['err'] ?? '';
 $selectedRole = $_GET['role'] ?? 'passenger';
-$allowedRoles = ['passenger', 'driver', 'depot_manager', 'minister', 'admin'];
+if ($selectedRole === 'minister') {
+    header('Location: ' . APP_URL . '/minister/login.php');
+    exit;
+}
+$allowedRoles = ['passenger', 'driver', 'depot_manager', 'admin'];
 if (!in_array($selectedRole, $allowedRoles, true)) {
     $selectedRole = 'passenger';
 }
@@ -60,7 +64,6 @@ $pageTitle = 'Login';
       <button class="auth-tab <?= $selectedRole === 'passenger' ? 'active' : '' ?>" data-role="passenger">Passenger</button>
       <button class="auth-tab <?= $selectedRole === 'driver' ? 'active' : '' ?>" data-role="driver">Driver/Conductor</button>
       <button class="auth-tab <?= $selectedRole === 'depot_manager' ? 'active' : '' ?>" data-role="depot_manager">Depot Mgr</button>
-      <button class="auth-tab <?= $selectedRole === 'minister' ? 'active' : '' ?>" data-role="minister">Minister</button>
       <button class="auth-tab <?= $selectedRole === 'admin' ? 'active' : '' ?>" data-role="admin">Admin</button>
     </div>
 

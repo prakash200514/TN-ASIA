@@ -73,13 +73,21 @@ function isLoggedIn(): bool {
 function requireLogin(string $role = ''): void {
     startAppSession();
     if (!isset($_SESSION['user_id'])) {
-        header('Location: ' . APP_URL . '/auth/login.php');
+        if ($role === 'minister') {
+            header('Location: ' . APP_URL . '/minister/login.php');
+        } else {
+            header('Location: ' . APP_URL . '/auth/login.php');
+        }
         exit;
     }
     if ($role !== '' && $_SESSION['role'] !== $role) {
         // Allow driver and conductor to share the same panel
         if ($role === 'driver_conductor' && in_array($_SESSION['role'], ['driver','conductor'])) return;
-        header('Location: ' . APP_URL . '/auth/login.php?err=unauthorized');
+        if ($role === 'minister') {
+            header('Location: ' . APP_URL . '/minister/login.php?err=unauthorized');
+        } else {
+            header('Location: ' . APP_URL . '/auth/login.php?err=unauthorized');
+        }
         exit;
     }
 }
