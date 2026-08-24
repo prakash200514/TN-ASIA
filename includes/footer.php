@@ -1,7 +1,9 @@
 <?php 
 // includes/footer.php
 if (!isset($hideContactFooter) || !$hideContactFooter) {
+    echo '<div class="footer-layout-wrapper">';
     include __DIR__ . '/contact_footer.php';
+    echo '</div>';
 }
 ?>
   <!-- Lenis Smooth Scroll JS -->

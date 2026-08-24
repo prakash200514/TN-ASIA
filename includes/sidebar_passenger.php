@@ -47,7 +47,19 @@ $links = [
       <div class="sidebar-icon-box"><i class="fa <?= $l['icon'] ?>"></i></div>
       <span><?= $l['label'] ?></span>
       <?php if ($l['file'] === 'notifs'): ?>
-        <span class="badge rounded-pill bg-success ms-auto" style="font-size:10px">3</span>
+        <?php
+          if (!isset($myNotifsCount)) {
+            $db_sb = getDB();
+            $u_sb = currentUser();
+            $uid_sb = (int)($u_sb['id'] ?? 0);
+            $stmt_sb = $db_sb->prepare("SELECT COUNT(*) FROM notifications WHERE user_id=? OR user_id IS NULL");
+            $stmt_sb->execute([$uid_sb]);
+            $myNotifsCount = (int)$stmt_sb->fetchColumn();
+          }
+        ?>
+        <?php if ($myNotifsCount > 0): ?>
+        <span class="badge rounded-pill bg-danger ms-auto" style="font-size:10px"><?= $myNotifsCount ?></span>
+        <?php endif; ?>
       <?php endif; ?>
     </a>
     <?php endforeach; ?>

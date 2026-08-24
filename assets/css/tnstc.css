@@ -1912,3 +1912,23 @@ img { max-width: 100%; }
   .col-lg-2-4 { flex: 0 0 auto; width: 20%; }
 }
 
+/* Contact Footer & Layout Alignment Fix */
+.footer-layout-wrapper {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body:has(.sidebar) .footer-layout-wrapper,
+.app-layout ~ .footer-layout-wrapper {
+  padding-left: var(--sidebar-w);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 991.98px) {
+  body:has(.sidebar) .footer-layout-wrapper,
+  .app-layout ~ .footer-layout-wrapper {
+    padding-left: 0;
+  }
+}
+
