@@ -206,12 +206,12 @@ include __DIR__ . '/../includes/header.php';
         </div>
 
         <div style="position:relative">
-          <button class="btn btn-light btn-sm position-relative" style="border-radius:50%;width:38px;height:38px;background:#f8fafc;border:1px solid #e2e8f0">
+          <a href="notifications.php" class="btn btn-light btn-sm position-relative" style="border-radius:50%;width:38px;height:38px;background:#f8fafc;border:1px solid #e2e8f0;display:inline-flex;align-items:center;justify-content:center">
             <i class="fa fa-bell" style="color:#64748b"></i>
             <?php if ($myNotifsCount > 0): ?>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:9px"><?= $myNotifsCount ?></span>
             <?php endif; ?>
-          </button>
+          </a>
         </div>
 
         <div class="d-flex align-items-center gap-2 ps-2 border-start">
@@ -323,7 +323,7 @@ include __DIR__ . '/../includes/header.php';
             <div>
               <div style="font-size:11px;color:#64748b;font-weight:700;text-transform:uppercase">Notifications</div>
               <div style="font-size:22px;font-weight:800;color:#0f172a;line-height:1.1"><?= $myNotifsCount ?></div>
-              <a href="#notifications" style="font-size:11px;color:#ef4444;font-weight:700;text-decoration:none">View all &rarr;</a>
+              <a href="notifications.php" style="font-size:11px;color:#ef4444;font-weight:700;text-decoration:none">View all &rarr;</a>
             </div>
           </div>
         </div>
