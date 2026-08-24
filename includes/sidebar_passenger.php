@@ -16,7 +16,7 @@ $links = [
   ['icon'=>'fa-robot',            'label'=>'AI Assistant',      'href'=>"$base/chatbot.php",      'file'=>'chatbot.php'],
   ['icon'=>'fa-bell',             'label'=>'Notifications',     'href'=>"$base/notifications.php",'file'=>'notifications.php'],
   ['icon'=>'fa-chart-pie',        'label'=>'Reports & Analytics','href'=>"$base/dashboard.php#analytics",'file'=>'analytics'],
-  ['icon'=>'fa-hand-holding-heart','label'=>'Schemes',          'href'=>"$base/dashboard.php#schemes",'file'=>'schemes'],
+  ['icon'=>'fa-hand-holding-heart','label'=>'Schemes',          'href'=>"$base/schemes.php",      'file'=>'schemes.php'],
   ['icon'=>'fa-credit-card',      'label'=>'e-Payments',        'href'=>"$base/my_tickets.php",   'file'=>'epayments'],
 ];
 ?>

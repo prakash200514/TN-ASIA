@@ -432,6 +432,7 @@ include __DIR__ . '/../includes/header.php';
           <div class="card border-0 shadow-sm p-4 h-100" style="border-radius:16px">
             <div class="d-flex align-items-center justify-content-between mb-3">
               <h5 style="font-weight:800;color:#0f172a;margin:0;font-size:16px">Latest Notifications</h5>
+              <a href="notifications.php" style="font-size:12px;font-weight:700;color:#2563eb;text-decoration:none">View All &rarr;</a>
             </div>
 
             <div class="notif-list">
