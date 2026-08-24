@@ -14,7 +14,7 @@ $links = [
   ['icon'=>'fa-comments',         'label'=>'Grievances',        'href'=>"$base/complaints.php",   'file'=>'complaints.php'],
   ['icon'=>'fa-box-open',         'label'=>'Lost & Found',      'href'=>"$base/lost_found.php",   'file'=>'lost_found.php'],
   ['icon'=>'fa-robot',            'label'=>'AI Assistant',      'href'=>"$base/chatbot.php",      'file'=>'chatbot.php'],
-  ['icon'=>'fa-bell',             'label'=>'Notifications',     'href'=>"$base/dashboard.php#notifs",'file'=>'notifs'],
+  ['icon'=>'fa-bell',             'label'=>'Notifications',     'href'=>"$base/notifications.php",'file'=>'notifications.php'],
   ['icon'=>'fa-chart-pie',        'label'=>'Reports & Analytics','href'=>"$base/dashboard.php#analytics",'file'=>'analytics'],
   ['icon'=>'fa-hand-holding-heart','label'=>'Schemes',          'href'=>"$base/dashboard.php#schemes",'file'=>'schemes'],
   ['icon'=>'fa-credit-card',      'label'=>'e-Payments',        'href'=>"$base/my_tickets.php",   'file'=>'epayments'],
@@ -46,7 +46,7 @@ $links = [
     <a href="<?= $l['href'] ?>" class="sidebar-link <?= $currentPage === $l['file'] ? 'active' : '' ?>">
       <div class="sidebar-icon-box"><i class="fa <?= $l['icon'] ?>"></i></div>
       <span><?= $l['label'] ?></span>
-      <?php if ($l['file'] === 'notifs'): ?>
+      <?php if ($l['file'] === 'notifications.php'): ?>
         <?php
           if (!isset($myNotifsCount)) {
             $db_sb = getDB();
