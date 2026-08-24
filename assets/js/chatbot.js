@@ -12,6 +12,9 @@ function chatbotInit() {
   const sendBtn      = document.getElementById('chatSend');
   if (!msgContainer) return;
 
+  // Clear any existing initial messages if re-initialized
+  msgContainer.innerHTML = '';
+
   // Initial welcome greeting
   appendBotMsg(`
     <div class="d-flex align-items-center gap-2 mb-2">
@@ -19,7 +22,7 @@ function chatbotInit() {
       <span class="text-muted" style="font-size:11px">24x7 Live</span>
     </div>
     Hello! 👋 Welcome to <b>TNSTC Tirunelveli Smart Bus Portal</b>.<br>
-    I am your AI Assistant. I can help you search bus timings, calculate fares, apply for student & monthly passes, track buses live, file grievances, and find depot helplines.
+    I am your AI Assistant. Ask me anything about bus timings, fares, student & monthly passes, live bus tracking, grievances, or depot helplines!
   `);
   appendInitialSuggestions();
 
@@ -40,30 +43,36 @@ function chatbotInit() {
       if (reply.suggestions && reply.suggestions.length > 0) {
         appendPills(reply.suggestions);
       }
-    }, 600);
+    }, 400);
   }
 
   function getAdvancedReply(rawText) {
-    const q = rawText.toLowerCase().trim();
+    const cleanText = rawText.trim();
+    const q = cleanText.toLowerCase();
 
-    // 1. Greetings & Small talk
-    if (/^(hi|hello|hii|heyy|hey|vanakkam|வணக்கம்|good morning|good afternoon|good evening|who are you|help|start)$/i.test(q)) {
+    // 1. Universal Greetings Regex (Matches hi, hii, hlo, hello, heloo, hey, heyy, vanakkam, etc.)
+    const greetingRegex = /^(h[ieaoy]+|hlo+|hlw|hello+|helo+|heloo+|helloo+|heyy+|hey+|howdy|yo+|sup|vanakkam|வணக்கம்|namaste|greetings|good\s*(morning|afternoon|evening)|hi\s*there|hello\s*there|start|menu|help|info|\?|\.!*)$/i;
+
+    const isGreeting = greetingRegex.test(q) || 
+      (q.length <= 5 && !/^\d+$/.test(q) && !['bus', 'pass', 'fare', 'cost', '77', '99', '12', '34', '58a', '58b', '110', 'stop'].includes(q));
+
+    if (isGreeting) {
       return {
         html: `
-          👋 <b>Hello there! How can I assist your travel today?</b><br>
-          You can ask me about:
-          <ul class="mb-2 ps-3 mt-1" style="font-size:12.5px">
+          👋 <b>Hello & Welcome! I am your TNSTC AI Assistant.</b><br><br>
+          How can I assist your travel today? You can ask me about:
+          <ul class="mb-2 ps-3 mt-2" style="font-size:12.5px">
             <li><b>Bus Timings & Routes</b> (e.g. <i>"Bus from Tirunelveli to Valliyoor"</i> or <i>"Route 77"</i>)</li>
             <li><b>Bus Passes</b> (Student Pass, Monthly Pass application process)</li>
             <li><b>Women's Free Travel</b> (Vidiyal Payanam scheme info)</li>
-            <li><b>Live Tracking</b> & <b>Ticket Fares</b></li>
-            <li><b>Grievances</b> & <b>Lost Property</b></li>
+            <li><b>Live GPS Tracking</b> & <b>Ticket Fares</b></li>
+            <li><b>Grievances</b> & <b>Lost Property Desk</b></li>
           </ul>`,
         suggestions: ['Bus from Tirunelveli to Valliyoor', 'Apply Student Pass', 'Women Free Travel Scheme', 'Live Bus Tracking', 'Contact Helplines']
       };
     }
 
-    // 2. Women Free Travel Scheme (Vidiyal Payanam)
+    // 2. Women Free Travel Scheme (Vidiyal Payanam / மகளிர் இலவச பயணம்)
     if (q.includes('women') || q.includes('lady') || q.includes('ladies') || q.includes('free travel') || q.includes('pink bus') || q.includes('vidiyal') || q.includes('மகளிர்') || q.includes('இலவச')) {
       return {
         html: `
@@ -79,7 +88,7 @@ function chatbotInit() {
     }
 
     // 3. Student & Monthly Bus Pass
-    if (q.includes('pass') || q.includes('student') || q.includes('monthly') || q.includes('renewal') || q.includes('college')) {
+    if (q.includes('pass') || q.includes('student') || q.includes('monthly') || q.includes('renewal') || q.includes('college') || q.includes('school')) {
       return {
         html: `
           💳 <b>TNSTC Bus Pass Portal Guide</b><br><br>
@@ -96,7 +105,7 @@ function chatbotInit() {
       };
     }
 
-    // 4. Route & Bus Timings Lookup
+    // 4. Specific Route & Bus Timings Lookup
     const matchedRoute = ROUTES_KB.find(r => 
       q.includes(r.source.toLowerCase()) || 
       q.includes(r.destination.toLowerCase()) || 
@@ -225,16 +234,16 @@ function chatbotInit() {
       };
     }
 
-    // 12. Smart Fallback with context suggestions
+    // 12. Smart AI Guidance (NEVER outputs cold dead-end error)
     return {
       html: `
-        🤖 <b>I am here to help with your TNSTC transit questions!</b><br>
-        I didn't quite catch that specific query, but here are the most requested services you can ask about:
+        🤖 <b>TNSTC AI Smart Assistant</b><br><br>
+        I am here to help you with all TNSTC bus transport services! Here are popular topics you can tap or ask about:
         <ul class="mb-2 ps-3 mt-2" style="font-size:12.5px">
-          <li><b>Route Timings:</b> <i>"Bus from Tirunelveli to Valliyoor"</i></li>
+          <li><b>Bus Schedules:</b> <i>"Bus from Tirunelveli to Valliyoor"</i></li>
           <li><b>Passes:</b> <i>"How to apply student pass?"</i></li>
-          <li><b>Tracking:</b> <i>"Live bus tracking"</i></li>
-          <li><b>Schemes:</b> <i>"Women free bus scheme"</i></li>
+          <li><b>Schemes:</b> <i>"Women free travel scheme"</i></li>
+          <li><b>Live GPS:</b> <i>"Track my bus"</i></li>
         </ul>`,
       suggestions: ['Bus from Tirunelveli to Valliyoor', 'How to apply student pass?', 'Women Free Travel Scheme', 'Live Bus Tracking', 'Tirunelveli Control Room']
     };

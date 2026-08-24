@@ -72,5 +72,5 @@ window.TNSTC_ROUTES    = <?= json_encode($routes) ?>;
 window.TNSTC_SCHEDULES = <?= json_encode($schedules) ?>;
 window.TNSTC_DEPOTS    = <?= json_encode($depots) ?>;
 </script>
-<script src="<?= APP_URL ?>/assets/js/chatbot.js"></script>
+<script src="<?= APP_URL ?>/assets/js/chatbot.js?v=<?= time() ?>"></script>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
