@@ -416,7 +416,7 @@ include __DIR__ . '/../includes/header.php';
 
               <!-- Tile 8: Govt Schemes -->
               <div class="col-6 col-sm-4 col-md-3">
-                <a href="#schemes" class="quick-service-tile">
+                <a href="schemes.php" class="quick-service-tile">
                   <div class="service-tile-icon" style="background:#f5f3ff;color:#6d28d9">
                     <i class="fa fa-hand-holding-heart"></i>
                   </div>
@@ -633,7 +633,7 @@ include __DIR__ . '/../includes/header.php';
               </div>
 
               <div class="col-6 col-sm-3">
-                <a href="bus_pass.php" class="d-flex align-items-center gap-2 p-2 rounded-3 text-decoration-none" style="background:#f8fafc;border:1px solid #e2e8f0;color:#0f172a">
+                <a href="schemes.php" class="d-flex align-items-center gap-2 p-2 rounded-3 text-decoration-none" style="background:#f8fafc;border:1px solid #e2e8f0;color:#0f172a">
                   <div style="width:32px;height:32px;border-radius:8px;background:#faf5ff;color:#9333ea;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa fa-hand-holding-heart"></i></div>
                   <div>
                     <div style="font-size:12px;font-weight:700">TN State Schemes</div>
