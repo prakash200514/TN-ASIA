@@ -1,4 +1,4 @@
-<?php >..........// api/book_ticket.php
+<?php >.........// api/book_ticket.php
 require_once __DIR__ . '/../config/db.php';
 startAppSession();
 header('Content-Type: application/json');
